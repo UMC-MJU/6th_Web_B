@@ -35,7 +35,7 @@ const validateEmail = () => {
 // 나이 유효성 검사 함수
 const validateAge = () => {
   const age = document.getElementById("age");
-  const ageValue = parseInt(age.value);
+  const ageValue = parseFloat(age.value);
   const ageMessage = document.getElementById("ageMessage");
 
   if (age.value == "") {
