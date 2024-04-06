@@ -1,0 +1,67 @@
+body {
+    background-color: #cee5eb;
+
+}
+
+.container {
+    display: flex;
+    text-align: center;
+    /*justify-content: center;*/
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    margin: 80px 0;
+    background-color: antiquewhite;
+}
+
+hr {
+    background-color: lightgray;
+    height: 1px;
+    width: 800px;
+}
+
+#todoInput {
+    width: 700px;
+    height:30px;
+}
+
+.todoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px black;
+    width: 300px;
+    /*gap: 50px;*/
+    /*background-color: aquamarine;*/
+    margin: 0 20px;
+}
+
+ul {
+    padding: 0;
+    margin-bottom: 40px;
+    /*background-color: cornflowerblue;*/
+}
+
+li {
+    width: 150px;
+    list-style: none;
+    border-bottom: 3px solid #bfd6db;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    /*background-color: aqua;*/
+}
+
+.todoItem .completedItem button {
+    background-color: #cae0e6;
+    color: black;
+}
