@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal</title>
+    <style>
+    .modal {
+        justify-content: center;
+        align-items: center;
+        display: none; /* 모달은 처음에 숨겨져 있어야 합니다. */
+        position: fixed; /* 화면에 고정된 위치에 표시됩니다. */
+        z-index: 1; /* 모달을 화면의 최상위로 설정합니다. */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 80%;
+        
+    }
+
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 모달을 수직 가운데 정렬합니다. */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    height: 30%;
+    text-align: left; 
+    }
+
+    .close {
+    background-color: #ddd; /* 버튼의 배경색 */
+    border: none; /* 테두리 제거 */
+    color: #fff; /* 버튼의 텍스트 색상 */
+    padding: 10px 15px; /* 버튼의 여백 설정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    text-decoration: none; /* 링크 텍스트의 밑줄 제거 */
+    display: inline-block; /* 인라인 블록 요소로 설정하여 여백이나 크기를 설정할 수 있도록 함 */
+    font-size: 14px; /* 텍스트 크기 설정 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경하여 클릭 가능하도록 함 */
+    border-radius: 5px; /* 버튼의 모서리를 둥글게 만듦 */
+    float: right;
+    
+}   
+    </style>
+
+</head>
+<body>
+    <h2>안녕하세요!</h2>
+    <a>내용내용내용</a>
+    <br><br>
+    <button id="openModalBtn">버튼 열기</button> <!-- 버튼에 ID를 추가 -->
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h4>안녕하세요!</h4>
+            <h4>모달 내용은 어쩌고 저쩌고...</h4>
+          <span class="close">닫기</span>
+        </div>
+    </div>
+
+    <script>
+        // 버튼을 클릭했을 때 모달창을 열기
+        document.getElementById("openModalBtn").addEventListener("click", function() {
+            var successModal = document.getElementById("successModal");
+            successModal.style.display = "block";
+        });
+
+        // 모달 안에 있는 닫기 버튼 클릭 이벤트 처리
+        var closeModal = document.getElementsByClassName("close")[0];
+        closeModal.onclick = function() {
+            var successModal = document.getElementById("successModal");
+            successModal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
