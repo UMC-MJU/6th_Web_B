@@ -82,3 +82,41 @@ h2 {
     height: 10px;
     font-size: 11px;
 }
+
+.modalContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 350px;
+    height: 160px;
+    background-color: white;
+    border-radius: 3px;
+}
+
+#modalTitle {
+    margin: 0;
+}
+
+#modalText {
+    background-color: green;
+    margin: 15px 0 20px 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.modalBtn {
+    text-align: right;
+}
