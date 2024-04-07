@@ -96,7 +96,6 @@ h2 {
 }
 
 .modal {
-    display: none;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -111,7 +110,6 @@ h2 {
 }
 
 #modalText {
-    background-color: green;
     margin: 15px 0 20px 0;
     font-size: 15px;
     font-weight: 600;

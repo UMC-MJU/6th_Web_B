@@ -148,7 +148,7 @@ document.getElementById("checkPassword").addEventListener("input", () => {
 });
 
 // 모달
-const modal = document.querySelector(".modal");
+const modal = document.querySelector(".modalContainer");
 const close = document.getElementById("close");
 
 document.getElementById("submitButton").addEventListener("click", () => {
