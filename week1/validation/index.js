@@ -146,3 +146,15 @@ document.getElementById("checkPassword").addEventListener("input", () => {
   checkPasswords();
   validationForm();
 });
+
+// 모달
+const modal = document.querySelector(".modal");
+const close = document.getElementById("close");
+
+document.getElementById("submitButton").addEventListener("click", () => {
+  console.log("제출됐고 모달을 띄우다...");
+  modal.style.display = "flex";
+});
+close.addEventListener("click", () => {
+  modal.style.display = "none";
+});
