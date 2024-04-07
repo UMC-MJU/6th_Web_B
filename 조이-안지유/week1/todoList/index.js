@@ -15,6 +15,7 @@ const addTodo = () => {
 
     const completeBtn = document.createElement("button");
     completeBtn.textContent = "완료";
+    completeBtn.className = "complete-btn";
     completeBtn.addEventListener("click", () => {
       const completedList = document.getElementById("completedList");
       completedList.appendChild(li);
@@ -25,6 +26,7 @@ const addTodo = () => {
       li.removeChild(completeBtn);
       const deleteBtn = document.createElement("button");
       deleteBtn.textContent = "삭제";
+      deleteBtn.className = "delete-btn";
       deleteBtn.addEventListener("click", () => {
         completedList.removeChild(li);
         console.log("삭제버튼 클릭!");
