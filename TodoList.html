@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="TodoList.css" rel="stylesheet">
+    <title>TodoList</title>
+</head>
+<body>
+    <div class="container">
+        <div class="todo">
+            <h2>UMC Study Plan</h2>
+            <hr class="TOP">
+            <div class="put">
+                <input type="text" id="input-box" placeholder="스터디 계획을 작성해보세요!" onkeydown="if(event.key === 'Enter' && inputBox.value.trim() !== '') { event.preventDefault(); addTask(); return false; }">
+            </div>
+            <div class="list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="do">해야 할 일</th>
+                            <th class="end">해낸 일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul id="list-do" class="tack-list">
+                                    <!-- 해야 할 일 리스트 -->
+                                </ul>
+                            </td>
+                            <td>
+                                <ul id="list-finsh" class="tack-list">
+                                    <!-- 해낸 일 리스트 -->
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="TodoList.js"></script>
+</html>
