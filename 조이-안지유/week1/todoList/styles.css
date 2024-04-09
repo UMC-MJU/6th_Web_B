@@ -59,7 +59,8 @@ li {
     font-weight: bold;
 }
 
-button {
+/*button {*/
+.complete-btn .delete-btn {
     background-color: #c7effc;
     border: none;
     color: black;
