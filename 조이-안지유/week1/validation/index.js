@@ -100,8 +100,10 @@ const checkPasswords = () => {
   }
 }
 
-// 유효성 검사 실행 함수
+// 유효성 검사 실행 및 폼 제출 방지 함수
 const validationForm = () => {
+  // if(e) e.preventDefault(); // 폼 기본 동작 방지, e 객체가 있는지 확인해야함
+
   const validations = [
     validateName(),
     validateEmail(),
@@ -158,3 +160,5 @@ document.getElementById("submitButton").addEventListener("click", () => {
 close.addEventListener("click", () => {
   modal.style.display = "none";
 });
+
+document.getElementById("signupForm").addEventListener("submit", validationForm);
