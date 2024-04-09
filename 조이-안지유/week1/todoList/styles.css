@@ -60,7 +60,7 @@ li {
 }
 
 /*button {*/
-.complete-btn .delete-btn {
+.complete-btn, .delete-btn {
     background-color: #c7effc;
     border: none;
     color: black;
