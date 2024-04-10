@@ -1,0 +1,60 @@
+*{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:bold;
+}
+body{
+    background-color: rgb(151, 188, 202);
+}
+hr{
+    border:1px solid white;
+}
+label{
+    font-size: 12px;
+}
+form{
+    float:left;
+}
+.box{
+    margin:30%;
+    padding:50px 150px;
+    background-color:rgb(255, 255, 255,0.75);
+    border-radius: 10px;
+}
+.button{
+    display:block;
+    width:80%;
+    height:40px;
+    background-color: gray;
+    color:white;
+    border:transparent;
+    border-radius: 5px;
+    margin: 0 auto; /*버튼 가운데 정렬*/
+    box-shadow: none;
+}
+.botton_disable{
+}
+.input{
+    display: block;
+    width:145%;
+    border:2px solid white;
+    border-radius:3px;
+    background:transparent;
+    margin: 0 auto;
+}
+.input:hover{
+    border: 2px solid rgb(63, 122, 210);
+}
+.validation{
+    font-size:9px;
+}
+.validation_success{
+    color:green;
+    font-size:9px;
+}
+.validation_error{
+    color:red;
+    font-size:9px;
+}
+.popup{
+    display:none;
+}
