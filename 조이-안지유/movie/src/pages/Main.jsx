@@ -4,8 +4,6 @@ import "../styles/movies.css";
 
 const Main = (props) => {
   const moviesData = props.data.results;
-  console.log(props.data);
-  console.log(moviesData);
   return (
     <div className="movieContainer">
       {moviesData.map((data, index) => (
