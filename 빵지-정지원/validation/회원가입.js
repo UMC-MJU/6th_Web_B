@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const nameInput = document.getElementById('name');
     const email = document.getElementById('email');
