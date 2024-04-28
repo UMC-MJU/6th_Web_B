@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
-import "../styles/movies.css";
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
 import MovieInfo from "./MovieInfo.jsx";
 import styled from "styled-components";
 
-const Movies = (props) => {
+const PopularMovies = (props) => {
   const {original_title, overview, poster_path, vote_average} = props.data;
+  console.log(props.data);
   const [isHover, setIsHover] = useState(false);
   const openInfo = () => {
     setIsHover(true);
@@ -12,7 +13,6 @@ const Movies = (props) => {
   const closeInfo = () => {
     setIsHover(false);
   }
-
   return (
     <Movie onMouseEnter={openInfo} onMouseLeave={closeInfo}>
       {isHover && <MovieInfo title={original_title} info={overview}/>}
@@ -21,12 +21,12 @@ const Movies = (props) => {
         <MovieTitle>{original_title}</MovieTitle>
         <MovieTitle>{vote_average}</MovieTitle>
       </MovieBasic>
-
     </Movie>
   );
 };
 
-export default Movies;
+export default PopularMovies;
+
 
 const Movie = styled.div`
   width: 240px;

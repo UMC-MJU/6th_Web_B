@@ -1,16 +1,31 @@
 import React from 'react';
 import styled from "styled-components";
+import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const goMain = () => {
+    navigate(`/`);
+    console.log("로고 클릭, 메인으로 이동");
+  }
   return (
     <HeaderContainer>
-      <LogoTitle>UMC Movie</LogoTitle>
+      <LogoTitle onClick={goMain}>UMC Movie</LogoTitle>
       <MoveCategory>
         <CategoryTitle>회원가입</CategoryTitle>
-        <CategoryTitle>Popular</CategoryTitle>
-        <CategoryTitle>Now Playing</CategoryTitle>
-        <CategoryTitle>Top Rated</CategoryTitle>
-        <CategoryTitle>Upcoming</CategoryTitle>
+        <CategoryTitle onClick={() => {
+          navigate(`/popular`)
+        }}>Popular</CategoryTitle>
+        <CategoryTitle onClick={() => {
+          navigate(`/nowplaying`)
+        }}>Now Playing</CategoryTitle>
+        <CategoryTitle onClick={() => {
+          navigate(`/toprated`)
+        }}>Top Rated</CategoryTitle>
+        <CategoryTitle onClick={() => {
+          navigate(`/upcoming`)
+        }}>Upcoming</CategoryTitle>
       </MoveCategory>
     </HeaderContainer>
   );
@@ -33,6 +48,8 @@ const HeaderContainer = styled.div`
 const LogoTitle = styled.p`
   color: white;
   margin-left: 10px;
+
+  cursor: pointer;
 `
 
 const MoveCategory = styled.div`
@@ -43,4 +60,5 @@ const CategoryTitle = styled.p`
   color: white;
   margin: 0 10px;
   font-size: 13px;
+  cursor: pointer;
 `

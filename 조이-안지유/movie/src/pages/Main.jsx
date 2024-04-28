@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Movies from "../components/Movies.jsx";
 import "../styles/movies.css";
 import styled from "styled-components";
 
 const Main = (props) => {
   const moviesData = props.data.results;
+  const [movieData, setMovieData] = useState([])
+
+  useEffect(() => {
+
+  })
   return (
     <MovieContainer>
       {moviesData.map((data, index) => (
