@@ -1,5 +1,3 @@
-import Main from "./pages/Main.jsx";
-import {movies} from "./assets/movies.js";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import MainPage from "./pages/MainPage.jsx";
@@ -9,22 +7,28 @@ import PopularPage from "./pages/PopularPage.jsx";
 import NowPlayingPage from "./pages/NowPlayingPage.jsx";
 import TopRatedPage from "./pages/TopRatedPage.jsx";
 import UpComing from "./pages/UpComing.jsx";
+import styled from "styled-components";
 
 function App() {
   return (
     <>
       <Navbar/>
-      <Routes>
-        <Route path="/" element={<MainPage/>}/>
-        <Route path="/main" element={<Main data={movies}/>}/>
-        <Route path="/popular" element={<PopularPage/>}/>
-        <Route path="/nowplaying" element={<NowPlayingPage/>}/>
-        <Route path="/toprated" element={<TopRatedPage/>}/>
-        <Route path="/upcoming" element={<UpComing/>}/>
-      </Routes>
+      <Container>
+        <Routes>
+          <Route path="/" element={<MainPage/>}/>
+          <Route path="/popular" element={<PopularPage/>}/>
+          <Route path="/nowplaying" element={<NowPlayingPage/>}/>
+          <Route path="/toprated" element={<TopRatedPage/>}/>
+          <Route path="/upcoming" element={<UpComing/>}/>
+        </Routes>
+      </Container>
       <Footer/>
     </>
   )
 }
 
 export default App
+
+const Container = styled.div`
+  margin: 25px 0 15px 0;
+`
