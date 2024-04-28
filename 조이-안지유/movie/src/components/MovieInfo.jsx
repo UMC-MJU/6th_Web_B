@@ -23,7 +23,7 @@ const MovieInfoContainer = styled.div`
   position: absolute;
   display: flex;
   width: 240px;
-  height: 440px;
+  height: 430px;
   background: rgba(0, 0, 0, 0.7);
   color: white;
   flex-direction: column;
