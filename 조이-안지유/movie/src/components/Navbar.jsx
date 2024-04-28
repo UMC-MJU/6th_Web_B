@@ -56,9 +56,17 @@ const MoveCategory = styled.div`
   display: flex;
 `
 
-const CategoryTitle = styled.p`
+const CategoryTitle = styled.button`
   color: white;
   margin: 0 10px;
   font-size: 13px;
   cursor: pointer;
+  background: transparent;
+  border: none;
+
+  &:hover {
+    font-size: 15px;
+    color: gold;
+    font-weight: bold;
+  }
 `
