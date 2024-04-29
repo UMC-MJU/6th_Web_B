@@ -7,7 +7,6 @@ const Navbar = () => {
 
   const goMain = () => {
     navigate(`/`);
-    console.log("로고 클릭, 메인으로 이동");
   }
   return (
     <HeaderContainer>
