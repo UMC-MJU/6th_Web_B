@@ -1,3 +1,83 @@
+@import 'reset.css';
+
+.root_wrap{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  width: 100%;
+}
+
+.nav-container {
+  background-color: #171A32;
+}
+
+.header-wrap {
+  height: 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+}
+
+.nav-right-wrap{
+  display: flex;
+  
+}
+
+.nav-right-wrap ul {
+  display: flex;
+}
+
+.nav-right-wrap li {
+  margin-right: 14px;
+  padding: 8px;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  color: white;
+  text-decoration: none;
+}
+
+.banner-container {
+  width: 100%;
+  height: 400px;
+  background-color: black;
+  position: relative;
+}
+
+.banner-text {
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.detail-container {
+  width: 100%;
+  height: 100%;
+  position:relative;
+}
+
+.detail-wrap {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%);
+  margin: 0 auto;
+}
+
+
+/* 
 body{
   background-color: #22254b;
 }
@@ -28,7 +108,7 @@ body{
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+  background: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경
   color: white;
   display: flex;
   flex-direction: column;
@@ -60,6 +140,6 @@ body{
 .movie-detail h4, p {
   margin: 0;
   padding: 10px;
-}
+} 
 
-/* overview가 길면 movie-detail이 이미지를 벗어남 */
+overview가 길면 movie-detail이 이미지를 벗어남 */
