@@ -1,18 +1,26 @@
-import { useState } from 'react'
-import './App.css'
-import {movies} from './data/moviesData'
-import MovieList from './components/MovieList';
-import MovieInfor from './components/MovieInfor';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import HomePage from './components/HomePage'; // HomePage 컴포넌트 임포트
+import MovieList from './components/MovieCardView/MovieList';
 
 function App() {
-
   return (
-    <>
-      <div className="app">
-        <MovieList movies={movies.results} />
+    <Router>
+      <Navbar />
+      <div style={{ paddingTop: '70px', paddingBottom: '30px' }}>  
+        <Routes>
+          <Route path="/" element={<HomePage />} /> 
+          <Route path="/popular" element={<MovieList category="popular" />} />
+          <Route path="/nowplaying" element={<MovieList category="nowplaying" />} />
+          <Route path="/toprated" element={<MovieList category="toprated" />} />
+          <Route path="/upcoming" element={<MovieList category="upcoming" />} />
+        </Routes>
       </div>
-    </>
-  )
+      <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
