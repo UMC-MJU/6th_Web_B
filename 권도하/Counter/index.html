@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1주차 실습</title>
+</head>
+<body>
+    <h2 id="number">0</h2>
+    <button  id="increase">+1</button>
+    <button  id="decrease">-1</button>
+        
+    <script>
+        // 변수 선언 및 DOM 요소 선택
+        var numberElement = document.getElementById("number");
+        var increaseButton = document.getElementById("increase");
+        var decreaseButton = document.getElementById("decrease");
+
+        // 콘솔 출력
+        console.log(numberElement);
+        console.log(increaseButton);
+        console.log(decreaseButton);
+
+        // 이벤트 리스너
+        increaseButton.addEventListener("click", function() {
+            console.log("increase가 클릭됨");
+
+            var currentNumber = parseInt(numberElement.textContent);
+            var newNumber = currentNumber + 1;
+            numberElement.textContent = newNumber;
+        });
+
+        // 이벤트 리스너
+        decreaseButton.addEventListener("click", function() {
+            console.log("decrease가 클릭됨");
+
+            var currentNumber = parseInt(numberElement.textContent);
+            var newNumber = currentNumber - 1;
+            numberElement.textContent = newNumber;
+        });
+    </script>
+</body>
+</html>
