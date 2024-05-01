@@ -1,21 +1,54 @@
-import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+// PopularPage.jsx
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import Poster from './Poster';
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  height: 50vh;
 `;
 
-function TopRatedPage() {
+const TopRatedPage = () => {
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchTopRatedMovies = async () => {
+      try {
+        const response = await axios.get('https://api.themoviedb.org/3/movie/top_rated', {
+          params: {
+            language: 'ko',
+            page: '1'
+          },
+          headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MWUwYWU5YjczMmQ5NmIxNmE0NTkyNjE4NzQzNDc4OCIsInN1YiI6IjY2MzFlY2U2YWQ1OWI1MDEyYjZjYTEzNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jt-7nM-82bQY3V5PX-re8U2MWWA0XnJ51tBVTlcr1jQ'
+          }
+        });
+        setTopRatedMovies(response.data.results);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchTopRatedMovies();
+  }, []);
+
   return (
     <Container>
-      <div style={{ textAlign: 'center' }}>
-        <h2>TopRatedPage</h2>
-      </div>
+      {topRatedMovies.map((movie, index) => (
+        <Poster
+          key={index}
+          title={movie.title}
+          poster_path={movie.poster_path}
+          vote_average={movie.vote_average}
+          overview={movie.overview}
+          index={index}
+        />
+      ))}
     </Container>
   );
-}
+};
 
 export default TopRatedPage;

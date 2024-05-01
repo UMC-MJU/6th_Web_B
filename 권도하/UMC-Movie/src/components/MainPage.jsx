@@ -9,12 +9,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const MainPageContainer = styled.div`
+  background-color:rgba(15, 9, 59, 0.856);
   height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #333;
+  background-color: black;
 `;
 
 const WelcomeMessage = styled.h2`
@@ -23,13 +24,14 @@ const WelcomeMessage = styled.h2`
 
 const LowerSection = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 50px;
   box-sizing: border-box;
   text-align: center;
+  background-color:rgba(15, 9, 59, 0.856);
 `;
 
 const Text = styled.p`
-  color: #333;
+  color: white;
 `;
 
 const SearchInput = styled.input`
@@ -37,6 +39,7 @@ const SearchInput = styled.input`
   margin-top: 10px;
   border: 1px solid #333;
   border-radius: 50px;
+  
 `;
 
 
@@ -48,7 +51,7 @@ function MainPage() {
         <WelcomeMessage>환영합니다!</WelcomeMessage>
       </MainPageContainer>
       <LowerSection>
-        <Text>Find your movies !</Text>
+        <Text> 🎥 Find your movies !</Text>
         <SearchInput type="text"/>
       </LowerSection>
     </div>

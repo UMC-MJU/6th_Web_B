@@ -1,8 +1,7 @@
-// App.jsx
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 import MainPage from './components/MainPage';
 import SignUpPage from './components/SignUpPage';
 import PopularPage from './components/PopularPage';
@@ -13,6 +12,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
+  background-color:rgba(15, 9, 59, 0.856);
 `;
 
 function App() {
