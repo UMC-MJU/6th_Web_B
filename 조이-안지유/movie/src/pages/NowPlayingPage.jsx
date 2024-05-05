@@ -38,6 +38,7 @@ export default NowPlayingPage;
 
 const MovieContainer = styled.div`
   display: flex;
+  justify-content: center;
   background-color: rgb(33, 35, 72);
   padding: 0 5px;
   width: 100%;
