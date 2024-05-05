@@ -8,6 +8,7 @@ import NowPlayingPage from "./pages/NowPlayingPage.jsx";
 import TopRatedPage from "./pages/TopRatedPage.jsx";
 import UpComing from "./pages/UpComing.jsx";
 import styled from "styled-components";
+import MovieDetailPage from "./pages/MovieDetailPage.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<MainPage/>}/>
+          <Route path="/movie/:title" element={<MovieDetailPage/>}/>
           <Route path="/popular" element={<PopularPage/>}/>
           <Route path="/nowplaying" element={<NowPlayingPage/>}/>
           <Route path="/toprated" element={<TopRatedPage/>}/>
