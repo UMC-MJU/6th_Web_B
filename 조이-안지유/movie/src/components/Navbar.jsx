@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
+  const [isLogin, setIsLogin] = useState("로그인");
   const navigate = useNavigate();
+
 
   const goMain = () => {
     navigate(`/`);
   }
+
+  const handleLogin = () => {
+    if (isLogin === "로그인") {
+      setIsLogin("로그아웃");
+    } else {
+      setIsLogin("로그인");
+    }
+  };
+
   return (
     <HeaderContainer>
       <LogoTitle onClick={goMain}>UMC Movie</LogoTitle>
       <MoveCategory>
-        <CategoryTitle>회원가입</CategoryTitle>
+        <CategoryTitle onClick={handleLogin}>{isLogin}</CategoryTitle>
         <CategoryTitle onClick={() => {
           navigate(`/popular`)
         }}>Popular</CategoryTitle>
