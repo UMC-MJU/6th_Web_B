@@ -10,6 +10,7 @@ const UpComing = () => {
     const options = {
       method: 'GET',
       url: 'https://api.themoviedb.org/3/movie/upcoming',
+      params: {language: 'ko-KR'},
       headers: {
         accept: 'application/json',
         Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY
