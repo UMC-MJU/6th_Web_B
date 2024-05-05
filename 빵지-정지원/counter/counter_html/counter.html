@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #number{
+        }
+        #increase{
+            
+        }
+        #decrease{
+
+        }
+        #increase:active, #decrease:active{
+            box-shadow: 0px 0px 5px 3px rgb(63, 153, 237);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var p1 =document.getElementById('number');
+            var count =0;
+            var prevButtonState = 0;
+
+            var button1 = document.getElementById('increase');
+            button1.addEventListener('click', function(){
+                console.log("increase가 클릭됨");
+                count ++;
+                p1.innerHTML =count;
+            });
+
+            var button2 = document.getElementById('decrease');
+            button2.addEventListener('click', function(){
+                console.log("decrease가 클릭됨");
+                count --;
+                p1.innerHTML =count;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2 id="number">0</h2>
+    <button id="increase">+1</button>
+    <button id="decrease">-1</button>
+</body>
+</html>
