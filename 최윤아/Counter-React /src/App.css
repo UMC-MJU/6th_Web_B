@@ -1,0 +1,22 @@
+
+.card {
+  display: flex;
+  justify-content: start;
+  padding: 2em;
+}
+
+.card button {
+  margin-right: 20px;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
