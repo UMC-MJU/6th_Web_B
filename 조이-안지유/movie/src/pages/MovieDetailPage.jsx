@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useParams} from "react-router-dom";
+import styled from "styled-components";
 
 const MovieDetailPage = () => {
   const params = useParams();
@@ -41,10 +42,56 @@ const MovieDetailPage = () => {
       });
   }, [params.title])
 
+  const {original_title, overview, poster_path, vote_average, popularity, release_date} = movieData;
+  console.log(original_title, overview, poster_path, vote_average, popularity, release_date);
+
   return (
-    <>
-    </>
+    <MovieDetailContainer>
+      <MoviePoster src={`https://image.tmdb.org/t/p/w500/${poster_path}`}/>
+      <MovieInfoBox>
+        <MovieTitle>{original_title}</MovieTitle>
+        <MovieInfoCategory>평점 {vote_average}</MovieInfoCategory>
+        <MovieInfoCategory>개봉일 {release_date}</MovieInfoCategory>
+        <MovieInfoCategory>줄거리</MovieInfoCategory>
+        <MovieOverview>{overview}</MovieOverview>
+      </MovieInfoBox>
+    </MovieDetailContainer>
   );
 };
 
 export default MovieDetailPage;
+
+const MovieDetailContainer = styled.div`
+  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 99vh;
+  gap: 70px;
+`
+
+const MoviePoster = styled.img`
+  width: 340px;
+  height: 500px;
+`
+const MovieInfoBox = styled.div`
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+`
+
+const MovieTitle = styled.h1`
+  color: white;
+`
+
+const MovieInfoCategory = styled.p`
+  color: white;
+  font-size: 17px;
+`
+
+const MovieOverview = styled.p`
+  font-size: 15px;
+  color: white;
+  margin: 0;
+`
