@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { FaStar } from 'react-icons/fa'; // FaStar 임포트
 
 const Container = styled.div`
   display: flex;
@@ -41,7 +42,6 @@ const ContentContainer = styled.div`
   margin-top : 100px;
 `;
 
-
 function MovieDetailPage() {
   const { movieName } = useParams();
   const [movie, setMovie] = useState(null);
@@ -49,7 +49,6 @@ function MovieDetailPage() {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-           //한국어 버전 가져오기 language=ko-KR이거 붙이고 쿼리 연결을 위해 & 사용
         const response = await axios.get(`https://api.themoviedb.org/3/search/movie?language=ko-KR&api_key=46a397cf7e08676521ec72f5fa736dd3&query=${movieName}`);
         setMovie(response.data.results[0]); 
       } catch (error) {
@@ -60,6 +59,27 @@ function MovieDetailPage() {
     fetchMovie();
   }, [movieName]);
 
+  // 평점 나오게 하는 부분
+  const starScore = () => {
+    if (!movie) return null;
+    const voteAverage = Math.round(movie.vote_average);
+    let star = [];
+    for (let i = 0; i < 5; i++) {
+      star.push(i < voteAverage ? true : false);
+    }
+    return (
+      <>
+        {star.map((isFilled, index) => (
+          <FaStar
+            key={index}
+            size="14"
+            color={isFilled ? "#ffc107" : "#e4e5e9"}
+          />
+        ))}
+      </>
+    );
+  };
+
   if (!movie) {
     return <div>Loading...</div>;
   }
@@ -69,19 +89,21 @@ function MovieDetailPage() {
       <Image src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
       <ContentContainer>
         <Title>{movie.title}</Title>
-        <Rating>평점 {movie.vote_average}</Rating>
+        <Rating>
+          평점 {starScore()}
+        </Rating>
         <ReleaseDate>개봉일 {movie.release_date} </ReleaseDate>
         <Overview>
-        {movie.overview ? (
-          <>
-            <span>줄거리</span>
-            <br />
-            {movie.overview}
-          </>
-        ) : (
-          'TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다.'
-        )}
-      </Overview>      
+          {movie.overview ? (
+            <>
+              <span>줄거리</span>
+              <br />
+              {movie.overview}
+            </>
+          ) : (
+            'TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다.'
+          )}
+        </Overview>      
       </ContentContainer>
     </Container>
   );
