@@ -41,4 +41,5 @@ a{
 }
 a:hover{
     font-weight: bolder;
+    color:rgba(255, 212, 83, 0.853);
 }
