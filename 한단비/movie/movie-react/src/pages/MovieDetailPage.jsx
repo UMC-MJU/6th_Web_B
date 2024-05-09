@@ -43,15 +43,25 @@ export const DetailInfo = styled.div`
   gap: 30px;
 `;
 export const DetailTitle = styled.h1`
+  display: flex;
+  align-items: center;
   color: white;
   font-size: ${(props) => props.size || "32px"};
   font-weight: 500;
+  font-style: ${(props) => props.font || "initial"};
+`;
+
+const StarsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(${(props) => props.roundedScore}, 1fr);
+  color: gold;
+  margin-left: 10px;
 `;
 
 export default function MovieDetailPage() {
   const { title } = useParams(); // url로 넘겨준 영화 이름
   const { state } = useLocation(); // navigate hook을 통해 넘겨준 props
-  const roundedScore = Math.round(state.vote_average);
+  const roundedScore = Math.floor(state.vote_average);
   console.log(title);
   console.log(state);
 
@@ -66,7 +76,12 @@ export default function MovieDetailPage() {
         />
         <DetailInfo>
           <DetailTitle>{title}</DetailTitle>
-          <DetailTitle size="20px">평점 {"★".repeat(roundedScore)}</DetailTitle>
+          <DetailTitle size="20px">
+            평점
+            <StarsContainer roundedScore={roundedScore}>
+              {"★".repeat(roundedScore)}
+            </StarsContainer>
+          </DetailTitle>
           <DetailTitle size="20px">개봉일 {state.release_date}</DetailTitle>
           <DetailTitle size="20px">줄거리</DetailTitle>
           {state.overview ? (

@@ -22,7 +22,7 @@ const NotFoundPage = () => {
           <DetailTitle size="20px">
             예상치 못한 에러가 발생했습니다;
           </DetailTitle>
-          <DetailTitle size="20px" style={{ fontStyle: "italic" }}>
+          <DetailTitle size="20px" font='italic'>
             Not Found
           </DetailTitle>
           <MainButton to="/">메인으로 이동하기</MainButton>
