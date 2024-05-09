@@ -26,7 +26,7 @@ const MovieDetailPage = () => {
         console.log(response.data);
         const movieId = response.data.results[0].id;
         return axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {
-          params: {language: 'en-US'},
+          params: {language: 'ko-KR'},
           headers: {
             accept: 'application/json',
             Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY
@@ -46,17 +46,19 @@ const MovieDetailPage = () => {
   console.log(original_title, overview, poster_path, vote_average, popularity, release_date);
 
   return (
-    <MovieDetailContainer>
-      <MoviePoster src={`https://image.tmdb.org/t/p/w500/${poster_path}`}/>
-      <MovieInfoBox>
-        <MovieTitle>{original_title}</MovieTitle>
-        <MovieInfoCategory>평점 {vote_average}</MovieInfoCategory>
-        <MovieInfoCategory>개봉일 {release_date}</MovieInfoCategory>
-        <MovieInfoCategory>줄거리</MovieInfoCategory>
-        {overview ? (<MovieOverview>{overview}</MovieOverview>) : (<MovieOverview>TMD에서 제공하는 API에 상세 줄거리 정보가
-          없습니다.</MovieOverview>)}
-      </MovieInfoBox>
-    </MovieDetailContainer>
+    <>
+      <MovieDetailContainer>
+        <MoviePoster src={`https://image.tmdb.org/t/p/w500/${poster_path}`}/>
+        <MovieInfoBox>
+          <MovieTitle>{original_title}</MovieTitle>
+          <MovieInfoCategory>평점 <MovieStar grade={Math.floor(vote_average)}/></MovieInfoCategory>
+          <MovieInfoCategory>개봉일 {release_date}</MovieInfoCategory>
+          <MovieInfoCategory>줄거리</MovieInfoCategory>
+          {overview ? (<MovieOverview>{overview}</MovieOverview>) : (<MovieOverview>TMD에서 제공하는 API에 상세 줄거리 정보가
+            없습니다.</MovieOverview>)}
+        </MovieInfoBox>
+      </MovieDetailContainer>
+    </>
   );
 };
 
@@ -86,9 +88,26 @@ const MovieTitle = styled.h1`
   color: white;
 `
 
-const MovieInfoCategory = styled.p`
+const MovieInfoCategory = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 5px;
   color: white;
   font-size: 17px;
+  margin-bottom: 10px;
+
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
+`
+
+const MovieStar = styled.div`
+  display: grid;
+  grid-template-columns: repeat(${props => props.grade}, 1fr);
+
+  &:before {
+    content: "${props => "⭐".repeat(props.grade)}";
+  }
 `
 
 const MovieOverview = styled.p`
