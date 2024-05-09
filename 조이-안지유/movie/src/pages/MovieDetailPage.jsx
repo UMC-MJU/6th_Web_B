@@ -47,26 +47,36 @@ const MovieDetailPage = () => {
 
   return (
     <>
-      <MovieDetailContainer>
-        <MoviePoster src={`https://image.tmdb.org/t/p/w500/${poster_path}`}/>
-        <MovieInfoBox>
-          <MovieTitle>{original_title}</MovieTitle>
-          <MovieInfoCategory>평점 <MovieStar grade={Math.floor(vote_average)}/></MovieInfoCategory>
-          <MovieInfoCategory>개봉일 {release_date}</MovieInfoCategory>
-          <MovieInfoCategory>줄거리</MovieInfoCategory>
-          {overview ? (<MovieOverview>{overview}</MovieOverview>) : (<MovieOverview>TMD에서 제공하는 API에 상세 줄거리 정보가
-            없습니다.</MovieOverview>)}
-        </MovieInfoBox>
-      </MovieDetailContainer>
+      <MovieBackground url={`https://image.tmdb.org/t/p/w500/${poster_path}`}>
+        <MovieDetailContainer>
+          <MoviePoster src={`https://image.tmdb.org/t/p/w500/${poster_path}`}/>
+          <MovieInfoBox>
+            <MovieTitle>{original_title}</MovieTitle>
+            <MovieInfoCategory>평점 <MovieStar grade={Math.floor(vote_average)}/></MovieInfoCategory>
+            <MovieInfoCategory>개봉일 {release_date}</MovieInfoCategory>
+            <MovieInfoCategory>줄거리</MovieInfoCategory>
+            {overview ? (<MovieOverview>{overview}</MovieOverview>) : (<MovieOverview>TMD에서 제공하는 API에 상세 줄거리 정보가
+              없습니다.</MovieOverview>)}
+          </MovieInfoBox>
+        </MovieDetailContainer>
+      </MovieBackground>
     </>
   );
 };
 
 export default MovieDetailPage;
 
+
+const MovieBackground = styled.div`
+  background-image: url(${props => props.url});
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+`
+
 const MovieDetailContainer = styled.div`
   display: flex;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   width: 100%;
