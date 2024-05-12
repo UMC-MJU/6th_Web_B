@@ -9,6 +9,7 @@ import TopRatedPage from "./pages/TopRatedPage.jsx";
 import UpComing from "./pages/UpComing.jsx";
 import styled from "styled-components";
 import MovieDetailPage from "./pages/MovieDetailPage.jsx";
+import SignUp from "./pages/SignUp.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<MainPage/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
           <Route path="/movie/:title" element={<MovieDetailPage/>}/>
           <Route path="/popular" element={<PopularPage/>}/>
           <Route path="/nowplaying" element={<NowPlayingPage/>}/>

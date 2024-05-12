@@ -23,7 +23,9 @@ const Navbar = () => {
     <HeaderContainer>
       <LogoTitle onClick={goMain}>UMC Movie</LogoTitle>
       <MoveCategory>
-        <CategoryTitle onClick={handleLogin}>{isLogin}</CategoryTitle>
+        <CategoryTitle onClick={() => {
+          navigate(`/signup`)
+        }}>회원가입</CategoryTitle>
         <CategoryTitle onClick={() => {
           navigate(`/popular`)
         }}>Popular</CategoryTitle>
