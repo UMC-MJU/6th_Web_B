@@ -1,3 +1,4 @@
+// MainPage.jsx
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
@@ -5,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+  }
+  h1,h2{
+    color : white;
   }
 `;
 
@@ -18,42 +23,42 @@ const MainPageContainer = styled.div`
   background-color: black;
 `;
 
-const WelcomeMessage = styled.h2`
-  color: #fff;
-`;
-
-const LowerSection = styled.div`
+const FindContainer = styled.div`
+  position: relative;
   width: 100%;
   padding: 50px;
+  height: 50vh;
   box-sizing: border-box;
   text-align: center;
   background-color:rgba(15, 9, 59, 0.856);
 `;
 
-const Text = styled.p`
-  color: white;
-`;
-
 const SearchInput = styled.input`
+  width: 300px;
   padding: 10px;
   margin-top: 10px;
   border: 1px solid #333;
   border-radius: 50px;
-  
 `;
 
+const SearchButton = styled.button`
+  position: absolute;
+  top: 43%;
+  transform: translateY(-50%);
+`;
 
 function MainPage() {
   return (
     <div>
       <GlobalStyle />
       <MainPageContainer>
-        <WelcomeMessage>환영합니다!</WelcomeMessage>
+        <h1>환영합니다</h1>
       </MainPageContainer>
-      <LowerSection>
-        <Text> 🎥 Find your movies !</Text>
+      <FindContainer>
+        <h2> 📽️ Find your movies !</h2>
         <SearchInput type="text"/>
-      </LowerSection>
+        <SearchButton>🔍</SearchButton>
+      </FindContainer>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-// SignUpPage.jsx
+// SignInPage.jsx
 import React from 'react';
 import styled from 'styled-components';
 
@@ -9,14 +9,14 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-function SignUpPage() {
+function SignInPage() {
   return (
     <Container>
       <div style={{ textAlign: 'center' }}>
-        <h2>SignUpPage</h2>
+        <h2>SignInPage</h2>
       </div>
     </Container>
   );
 }
 
-export default SignUpPage;
+export default SignInPage;

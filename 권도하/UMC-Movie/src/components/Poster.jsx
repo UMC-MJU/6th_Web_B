@@ -5,6 +5,7 @@ const StyledPoster = styled.div`
   border-radius: 10px;
   width: 250px;
   margin: 16px;
+  margin-top: 40px;
   background-color: #33366d;
   color: white;
   position: relative;
@@ -13,6 +14,7 @@ const StyledPoster = styled.div`
   img {
     max-width: 100%;
     max-height: 100%;
+    border-radius: 10px 10px 0 0;
   }
 
   .overview {
@@ -33,6 +35,7 @@ const StyledPoster = styled.div`
     padding: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
+    border-radius: 10px 10px 10px 10px;
   }
 
   &:hover .overview {

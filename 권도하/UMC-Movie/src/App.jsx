@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import MainPage from './components/MainPage';
+import SignInPage from './components/SignInPage';
 import SignUpPage from './components/SignUpPage';
 import PopularPage from './components/PopularPage';
 import NowPlayingPage from './components/NowPlayingPage';
@@ -22,6 +23,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<MainPage/>}/>
+          <Route path='/signin' element={<SignInPage/>}/>
           <Route path='/signup' element={<SignUpPage/>}/>
           <Route path='/popular' element={<PopularPage/>}/>
           <Route path='/nowplaying' element={<NowPlayingPage/>}/>
