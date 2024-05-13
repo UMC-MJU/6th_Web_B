@@ -36,9 +36,7 @@ const LeftButton = styled(Button)`
 const SignInBoutton = styled(Button)`
   margin-left: 5px;
   color: yellow;
-`;
-const RightButton = styled(Button)`
-  margin-left: 5px;
+
 `;
 
 const RightButtonContainer = styled.div`
@@ -57,9 +55,9 @@ function Navbar() {
     <NavbarContainer>
       <LeftButton as={Link} to="/">UMC Movie</LeftButton>
       <RightButtonContainer>
-        <RightButton onClick={handleToggle}>
+        <SignInBoutton as={Link} to={isLoggedIn ? "/" : "/signin"} onClick={handleToggle}>
           {isLoggedIn ? '로그아웃' : '로그인'}
-        </RightButton>
+        </SignInBoutton>
         <Button as={Link} to="/signup">회원가입</Button> 
         <Button as={Link} to="/popular">Popular</Button> 
         <Button as={Link} to="/nowplaying">Now Playing</Button>
