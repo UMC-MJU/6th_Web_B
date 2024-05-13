@@ -9,6 +9,8 @@ import PopularPage from './components/PopularPage';
 import NowPlayingPage from './components/NowPlayingPage';
 import TopRatedPage from './components/TopRatedPage';
 import UpcomingPage from './components/UpcomingPage';
+import MovieDetailPage from './components/MovieDetailPage';
+
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -23,6 +25,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<MainPage/>}/>
+          <Route path='/movie/:original_title' element={<MovieDetailPage/>}/>
           <Route path='/signin' element={<SignInPage/>}/>
           <Route path='/signup' element={<SignUpPage/>}/>
           <Route path='/popular' element={<PopularPage/>}/>

@@ -1,4 +1,4 @@
-// PopularPage.jsx
+// TopRatedPage.jsx
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -24,7 +24,7 @@ const TopRatedPage = () => {
           },
           headers: {
             accept: 'application/json',
-            Authorization: `Bearer ${import.meta.env.REACT_APP_TMDB_TOKEN}`
+            Authorization: `Bearer + ${import.meta.env.REACT_APP_TMDB_TOKEN}`
           }
         });
         setTopRatedMovies(response.data.results);
@@ -45,7 +45,7 @@ const TopRatedPage = () => {
           poster_path={movie.poster_path}
           vote_average={movie.vote_average}
           overview={movie.overview}
-          index={index}
+          original_title={movie.original_title}
         />
       ))}
     </Container>

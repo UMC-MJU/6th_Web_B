@@ -45,7 +45,7 @@ const NowPlayingPage = () => {
           poster_path={movie.poster_path}
           vote_average={movie.vote_average}
           overview={movie.overview}
-          index={index}
+          original_title={movie.original_title}
         />
       ))}
     </Container>
