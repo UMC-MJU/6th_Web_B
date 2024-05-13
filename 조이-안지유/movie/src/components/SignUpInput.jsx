@@ -5,25 +5,36 @@ const SignUpInput = ({
                        name,
                        type,
                        placeholder,
-                       register,
-                       handleSubmit,
-                       watch,
-                       errors
+                       errors,
+                       ...rest
                      }) => {
-  // props 전달 받기
-  // name, type, placeholder, errormessage, 유효성검사....,
+  console.log(errors);
   return (
-    <>
-      <Input name={name} type={type} placeholder={placeholder} {...register(name)} handleSubmit={handleSubmit}
-             watch={watch}></Input>
-    </>
+    <InputContainer>
+      <Input name={name} type={type} placeholder={placeholder} {...rest}
+      />
+      {errors[name] && <ErrorMessage>{errors[name].message}</ErrorMessage>}
+    </InputContainer>
   );
 };
 
 export default SignUpInput;
 
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
+
 const Input = styled.input`
   width: 30vw;
   height: 35px;
   border-radius: 30px;
+`
+
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: 12px;
+  //margin: 0;
+  margin: 5px 0 0 10px;
 `
