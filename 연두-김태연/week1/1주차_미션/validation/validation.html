@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="validation.css" rel="stylesheet">
+    <title>validation</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form id="myForm">
+            <h3>회원가입</h3>
+            <hr color="white">
+
+            <div class="input-box">
+                <p>이름</p>
+                <input type="text" id="nameInput">
+                <p id="nameMessage" class="message"></p>
+            </div>
+            
+            <div class="input-box">
+                <p>이메일</p>
+                <input type="email" id="emailInput">
+                <p id="emailMessage" class="message"></p>
+            </div>
+        
+            <div class="input-box">
+                <p>나이</p>
+                <input type="text" id="ageInput">
+                <p id="ageMessage" class="message"></p>
+            </div>
+        
+            <div class="input-box">
+                <p>비밀번호</p>
+                <input type="password" id="passInput">
+                <p id="passMessage" class="message"></p>
+            </div> 
+
+            <div class="input-box">
+                <p>비밀번호 확인</p>
+                <input type="password" id="passchInput">
+                <p id="passchMessage" class="message"></p>
+            </div>
+
+            <button type="submit" class="btn">가입하기</button>
+            
+            <div id="successModal" class="modal">
+                <div class="modal-content">
+                  <h4>가입 성공!</h4>
+                  <h5>UMC 챌린저 가입을 축하합니다!!!</h5>
+                  <span class="close">닫기</span>
+                </div>
+            </div>
+
+        </form>
+        
+    </div>
+    <script src="validation.js"></script>
+
+</body>
+</html>
