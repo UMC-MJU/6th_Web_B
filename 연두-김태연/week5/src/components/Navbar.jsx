@@ -61,7 +61,7 @@ function Navbar() {
       </LeftButton>
       <RightButtonContainer>
         <Button as={Link} to="/signup" isActive={activeButton === 'signup'} onClick={() => handleButtonClick('signup')}>
-          {activeButton === 'signup' ? '로그아웃' : '로그인'}
+        회원가입
         </Button>
         <Button as={Link} to="/popular" isActive={activeButton === 'popular'} onClick={() => handleButtonClick('popular')}>
           Popular
