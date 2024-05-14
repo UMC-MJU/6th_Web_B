@@ -5,6 +5,7 @@ import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -17,6 +18,8 @@ const SignUp = () => {
   const onSubmit = (data) => {
     if (Object.keys(errors).length === 0) { // 에러가 하나도 없으면 -> 유효성 검사 모두 통과했다는 의미
       console.log(data);
+      alert("회원가입이 완료되었습니다!")
+      navigate(`/`);
     }
   }
 
