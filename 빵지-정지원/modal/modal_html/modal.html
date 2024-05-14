@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .layer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 5px;
+            padding: 20px;
+            background: #ffffff;
+        }
+        .modalOn {
+            display: block; /* 모달 표시 */
+        }
+
+        .button {
+        }
+        .button:hover {
+            background-color: rgba(0, 0, 255, 0.5); /* 마우스 호버 시 색상 변경 */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.querySelector('.modal');
+            const layer = document.querySelector('.layer');
+            const button_open = document.getElementById('buttonOpen');
+            const button_close = document.getElementById('buttonClose');
+
+            button_open.addEventListener('click', function(){
+                console.log("열기");
+                modal.classList.add('modalOn');
+                layer.classList.add('modalOn'); // 레이어도 활성화
+            });
+
+            button_close.addEventListener('click', function(){
+                console.log("닫기");
+                modal.classList.remove('modalOn');
+                layer.classList.remove('modalOn'); // 레이어 비활성화
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+        <h1>안녕하세요!</h1>
+        <p>내용내용내용</p>
+        <button class="button" id="buttonOpen">버튼 열기</button>
+    </div>
+    
+    <div class="layer">
+        <div class="modal">
+            <h2>안녕하세요</h2>
+            <p><strong>모달 내용은 어쩌고 저쩌고..</strong></p>
+            <button class="button" id="buttonClose">닫기</button>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

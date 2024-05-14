@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal</title>
+    <style>
+    .modal {
+        justify-content: center;
+        align-items: center;
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 80%;
+        
+    }
+
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    height: 30%;
+    text-align: left; 
+    }
+
+    .close {
+    background-color: #ddd; 
+    border: none;
+    color: #fff; 
+    padding: 10px 15px; 
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer; 
+    border-radius: 5px; 
+    float: right;
+    
+}   
+    </style>
+
+</head>
+<body>
+    <h2>안녕하세요!</h2>
+    <a>내용내용내용</a>
+    <br><br>
+    <button id="openModalBtn">버튼 열기</button> 
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h4>안녕하세요!</h4>
+            <h4>모달 내용은 어쩌고 저쩌고...</h4>
+          <span class="close">닫기</span>
+        </div>
+    </div>
+
+    <script>
+        // 버튼을 클릭했을 때 모달창을 열기
+        document.getElementById("openModalBtn").addEventListener("click", function() {
+            var successModal = document.getElementById("successModal");
+            successModal.style.display = "block";
+        });
+
+        // 모달 안에 있는 닫기 버튼 클릭 이벤트 처리
+        var closeModal = document.getElementsByClassName("close")[0];
+        closeModal.onclick = function() {
+            var successModal = document.getElementById("successModal");
+            successModal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
