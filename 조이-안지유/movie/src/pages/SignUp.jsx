@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import SignUpInput from "../components/SignUpInput.jsx";
 import {useForm} from "react-hook-form";
@@ -9,13 +9,15 @@ const SignUp = () => {
     register,
     handleSubmit,
     watch,
-    formState: {errors},
+    formState: {errors, isValid},
   } = useForm({
     mode: "onChange" // 입력 필드가 변경될 때마다 유효성검사 실행
   });
   const password = watch("password");
   const onSubmit = (data) => {
-    console.log(data);
+    if (Object.keys(errors).length === 0) { // 에러가 하나도 없으면 -> 유효성 검사 모두 통과했다는 의미
+      console.log(data);
+    }
   }
 
   return (
@@ -62,7 +64,7 @@ const SignUp = () => {
           validate: {samePw: v => v === password || "비밀번호가 일치하지 않습니다.",}
         })} errors={errors}/>
         {errors.checkPassword && <ErrorMessage>{errors.checkPassword.message}</ErrorMessage>}
-        <SubmitBtn type="submit">제출하기</SubmitBtn>
+        <SubmitBtn type="submit" disabled={!isValid}>제출하기</SubmitBtn>
       </SignUpForm>
       <AdditionalBox>
         <AdditionalText>이미 아이디가 있으신가요?</AdditionalText>
@@ -104,7 +106,6 @@ const Input = styled.input`
 const ErrorMessage = styled.p`
   color: red;
   font-size: 12px;
-  //margin: 0;
   margin: 5px 0 0 10px;
 `
 
