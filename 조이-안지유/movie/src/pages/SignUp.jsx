@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
-import SignUpInput from "../components/SignUpInput.jsx";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 
