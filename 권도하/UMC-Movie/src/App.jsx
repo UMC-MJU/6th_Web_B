@@ -25,7 +25,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<MainPage/>}/>
-          <Route path='/movie/:original_title' element={<MovieDetailPage/>}/>
+          <Route path='/movie/:title' element={<MovieDetailPage/>}/>
           <Route path='/signin' element={<SignInPage/>}/>
           <Route path='/signup' element={<SignUpPage/>}/>
           <Route path='/popular' element={<PopularPage/>}/>

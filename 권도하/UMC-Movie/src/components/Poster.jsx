@@ -72,14 +72,24 @@ const StyledPoster = styled.div`
   }
 `;
 
-const Poster = ({ title, poster_path, vote_average, overview, original_title }) => {
+const Poster = ({ title, poster_path, vote_average, overview, release_date, original_title, backdrop_path }) => {
   const roundedRating = vote_average.toFixed(1); // 별점 반올림
   const displayOverview = overview || 'TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다.'; //overview가 없을 경우
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false); // hover 상태를 관리하는 상태 변수
 
   const handlePosterClick = () => {
-    navigate(`/movie/${original_title}`);
+    navigate(`/movie/${title}`, {
+      state: {
+        title,
+        poster_path,
+        vote_average,
+        overview,
+        release_date,
+        original_title,
+        backdrop_path
+      }
+    });
   };
 
   return (
