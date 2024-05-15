@@ -73,13 +73,11 @@ span {
 
 `;
 
-// { title, poster_path, vote_average}
 const Movie = (props) => {
-    const [isHover, setIsHover] = useState(false);
     const navigate = useNavigate();
 
     const onClickMovieItem = () => {
-        navigate(`/${props.title}`, {
+        navigate(`/movie/${encodeURIComponent(props.title)}`, {
             state: props,
         })
     }
@@ -87,21 +85,11 @@ const Movie = (props) => {
 
     return (
         <MovieContainer onClick={onClickMovieItem}>
-            {/* // onMouseEnter={() => setIsHover(true)}
-            // onMouseLeave={() => setIsHover(false)} */}
-        
             <MovieImage src={IMG_BASE_URL + props.poster_path} alt={props.title} />
             <MovieInfo>
                 <h4>{props.title}</h4>
                 <span>{props.vote_average}</span>
             </MovieInfo>
-
-            {/* {isHover && (
-                <MovieDetail>
-                    <h4>{title}</h4>
-                    <p>{overview}</p>
-                </MovieDetail>
-            )} */}
         </MovieContainer>
     );
 }
