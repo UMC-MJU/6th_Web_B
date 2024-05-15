@@ -55,7 +55,7 @@ const MovieDetailPage = () => {
             <MovieInfoCategory>평점 <MovieStar grade={Math.floor(vote_average)}/></MovieInfoCategory>
             <MovieInfoCategory>개봉일 {release_date}</MovieInfoCategory>
             <MovieInfoCategory>줄거리</MovieInfoCategory>
-            {overview ? (<MovieOverview>{overview}</MovieOverview>) : (<MovieOverview>TMD에서 제공하는 API에 상세 줄거리 정보가
+            {overview ? (<MovieOverview>{overview}</MovieOverview>) : (<MovieOverview>TMDB에서 제공하는 API에 상세 줄거리 정보가
               없습니다.</MovieOverview>)}
           </MovieInfoBox>
         </MovieDetailContainer>
