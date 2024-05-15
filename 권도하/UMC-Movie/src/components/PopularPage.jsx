@@ -24,7 +24,7 @@ const PopularPage = () => {
           },
           headers: {
             accept: 'application/json',
-            Authorization: `Bearer ${import.meta.env.REACT_APP_TMDB_TOKEN}`
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MWUwYWU5YjczMmQ5NmIxNmE0NTkyNjE4NzQzNDc4OCIsInN1YiI6IjY2MzFlY2U2YWQ1OWI1MDEyYjZjYTEzNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jt-7nM-82bQY3V5PX-re8U2MWWA0XnJ51tBVTlcr1jQ`
           }
         });
         setPopularMovies(response.data.results);

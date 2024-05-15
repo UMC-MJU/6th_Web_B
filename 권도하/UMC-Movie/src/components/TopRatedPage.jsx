@@ -24,7 +24,7 @@ const TopRatedPage = () => {
           },
           headers: {
             accept: 'application/json',
-            Authorization: `Bearer + ${import.meta.env.REACT_APP_TMDB_TOKEN}`
+            Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
           }
         });
         setTopRatedMovies(response.data.results);
