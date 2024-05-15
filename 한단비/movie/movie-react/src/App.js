@@ -10,6 +10,7 @@ import UpComing from './pages/UpComing';
 import Navbar from './components/Navbar';
 import MovieDetailPage from './pages/MovieDetailPage'
 import NotFoundPage from './pages/NotFoundPage';
+import Register from './pages/RegisterPage';
 
 // movie components를 받는 container
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/register" element={<Register/>} />
           <Route path="/nowplaying" element={<NowPlayingPage />} />
           <Route path="/movie/:title" element={<MovieDetailPage/>}/>
           <Route path="/popular" element={<PopularPage />} />

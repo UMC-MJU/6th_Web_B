@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const NavContainer = styled.div`
@@ -37,28 +37,24 @@ const StyledLink = styled(Link)`
 `;
 
 export default function Navbar() {
-    const [logState, setLogState] = useState('로그인');
+    const [color, setColor] = useState('white');
 
-    // 로그인 / 로그아웃 텍스트 변경
-    const toggleLog = () => {
-        if(logState === '로그인'){
-            setLogState('로그아웃');
-        } else {
-            setLogState('로그인');
-        }
-    }
+    const handleClick = () => {
+      setColor('#E1C35C');
+    };
+
   return (
     <NavContainer>
       <NavWrapper>
         <LogoWrapper>
-          <Link className="logo" to="/popular">
+          <Link className="logo" to="/">
             UMC Movie
           </Link>
         </LogoWrapper>
         <ButtonWrapper>
           <ul>
             <li>
-              <StyledLink to="/" color='#E1C35C' onClick={toggleLog}>{logState}</StyledLink>
+              <StyledLink to="/register" color={color} onClick={handleClick}>회원가입</StyledLink>
             </li>
             <li>
               <StyledLink to="/popular">Popular</StyledLink>

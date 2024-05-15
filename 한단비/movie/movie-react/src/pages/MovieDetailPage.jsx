@@ -20,7 +20,7 @@ export const DetailContainer = styled.div`
   margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: ${(props) => (props.align ? "flex-start" : "center")};
   background-color: #1f2141;
   position: relative;
 `;
