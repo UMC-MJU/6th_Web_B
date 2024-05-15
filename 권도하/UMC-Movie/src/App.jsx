@@ -10,6 +10,7 @@ import NowPlayingPage from './components/NowPlayingPage';
 import TopRatedPage from './components/TopRatedPage';
 import UpcomingPage from './components/UpcomingPage';
 import MovieDetailPage from './components/MovieDetailPage';
+import NotFoundPage from './components/NotFoundPage';
 
 import styled from 'styled-components';
 
@@ -32,6 +33,7 @@ function App() {
           <Route path='/nowplaying' element={<NowPlayingPage/>}/>
           <Route path='/toprated' element={<TopRatedPage/>}/>
           <Route path='/upcoming' element={<UpcomingPage/>}/>
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </Container>
