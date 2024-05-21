@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { IMG_BASE_URL } from "../components/Movie";
 import styled from "styled-components";
+import MovieCredits from "../components/MovieCredits";
 
 const BackgroundImage = styled.div`
   width: 100%;
@@ -16,13 +17,15 @@ const BackgroundImage = styled.div`
 
 export const DetailContainer = styled.div`
   width: 100%;
-  height: calc(100vh - 64px);
+  height: 100%;
+  min-height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: ${(props) => (props.align ? "flex-start" : "center")};
   background-color: #1f2141;
   position: relative;
+  flex-direction: column;
 `;
 
 export const DetailWrapper = styled.div`
@@ -58,41 +61,50 @@ const StarsContainer = styled.div`
   margin-left: 10px;
 `;
 
+const CreditContainer = styled.div`
+  width: 100%;
+  display: flex;
+  height: 100%;
+`;
+
 export default function MovieDetailPage() {
-  const { title } = useParams(); // url로 넘겨준 영화 이름
+  const { id } = useParams(); // url로 넘겨준 영화 이름
   const { state } = useLocation(); // navigate hook을 통해 넘겨준 props
   const roundedScore = Math.floor(state.vote_average);
-  console.log(title);
+  console.log(id);
   console.log(state);
 
   return (
-    <DetailContainer>
-      <BackgroundImage bgImage={IMG_BASE_URL + state.poster_path} />
-      <DetailWrapper>
-        <img
-          style={{ width: "300px", height: "450px" }}
-          src={IMG_BASE_URL + state.poster_path}
-          alt={title}
-        />
-        <DetailInfo>
-          <DetailTitle>{title}</DetailTitle>
-          <DetailTitle size="20px">
-            평점
-            <StarsContainer roundedScore={roundedScore}>
-              {"★".repeat(roundedScore)}
-            </StarsContainer>
-          </DetailTitle>
-          <DetailTitle size="20px">개봉일 {state.release_date}</DetailTitle>
-          <DetailTitle size="20px">줄거리</DetailTitle>
-          {state.overview ? (
-            <DetailTitle size="16px">{state.overview}</DetailTitle>
-          ) : (
-            <DetailTitle size="16px">
-              TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다.
+    <div>
+      <DetailContainer>
+        <BackgroundImage bgImage={IMG_BASE_URL + state.poster_path} />
+        <DetailWrapper>
+          <img
+            style={{ width: "300px", height: "450px" }}
+            src={IMG_BASE_URL + state.poster_path}
+            alt={state.title}
+          />
+          <DetailInfo>
+            <DetailTitle>{state.title}</DetailTitle>
+            <DetailTitle size="20px">
+              평점
+              <StarsContainer roundedScore={roundedScore}>
+                {"★".repeat(roundedScore)}
+              </StarsContainer>
             </DetailTitle>
-          )}
-        </DetailInfo>
-      </DetailWrapper>
-    </DetailContainer>
+            <DetailTitle size="20px">개봉일 {state.release_date}</DetailTitle>
+            <DetailTitle size="20px">줄거리</DetailTitle>
+            {state.overview ? (
+              <DetailTitle size="16px">{state.overview}</DetailTitle>
+            ) : (
+              <DetailTitle size="16px">
+                TMDB에서 제공하는 API에 상세 줄거리 정보가 없습니다.
+              </DetailTitle>
+            )}
+          </DetailInfo>
+        </DetailWrapper>
+      </DetailContainer>
+      <MovieCredits />
+    </div>
   );
 }

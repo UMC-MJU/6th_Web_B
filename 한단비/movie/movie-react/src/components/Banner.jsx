@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import SearchMovie from "./SearchMovie";
+import Movie from "./Movie";
 
 const Container = styled.div`
   width: 100%;
-  height: calc(100vh - 64px);
+  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 `;
 const BannerContainer = styled.div`
   width: 100%;
-  height: 40vh;
+  height: 500px;
   background-color: black;
   display: flex;
   justify-content: center;
@@ -28,12 +31,12 @@ const BannerText = styled.h1`
 
 const SearchContainer = styled.div`
   width: 100%;
-  height: 60vh;
+  height: 1000px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  background-color: #1F2141;
+  background-color: #1f2141;
 `;
 
 const SearchTitle = styled.h1`
@@ -41,36 +44,8 @@ const SearchTitle = styled.h1`
   text-align: center;
   font-size: 30px;
   color: white;
-`
-
-const InputContainer = styled.div`
-  width: 50%;
-  height: 10vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  margin-top: 50px;
 `;
-
-const SearchInput = styled.input`
-  width: 30%;
-  height: 25px;
-  border-radius: 25px;
-  border: none;
-  padding: 10px;
-`;
-
-const SearchIcon = styled.button`
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #FEC623;
-  border: none;
-  border-radius: 30px;
-`
 
 export default function Banner() {
   return (
@@ -80,10 +55,7 @@ export default function Banner() {
       </BannerContainer>
       <SearchContainer>
         <SearchTitle>📽 Find your movies!</SearchTitle>
-        <InputContainer>
-          <SearchInput></SearchInput>
-          <SearchIcon>🔍</SearchIcon>
-        </InputContainer>
+        <SearchMovie />
       </SearchContainer>
     </Container>
   );

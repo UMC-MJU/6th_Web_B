@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/register" element={<Register/>} />
           <Route path="/nowplaying" element={<NowPlayingPage />} />
-          <Route path="/movie/:title" element={<MovieDetailPage/>}/>
+          <Route path="/movie/:id" element={<MovieDetailPage/>}/>
           <Route path="/popular" element={<PopularPage />} />
           <Route path="/toprated" element={<TopRatePage />} />
           <Route path="/upcoming" element={<UpComing />} />

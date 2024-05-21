@@ -77,7 +77,7 @@ const Movie = (props) => {
     const navigate = useNavigate();
 
     const onClickMovieItem = () => {
-        navigate(`/movie/${encodeURIComponent(props.title)}`, {
+        navigate(`/movie/${encodeURIComponent(props.id)}`, {
             state: props,
         })
     }
