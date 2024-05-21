@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useParams} from "react-router-dom";
 import styled from "styled-components";
+import CastCrewInfo from "../components/CastCrewInfo.jsx";
 
 const MovieDetailPage = () => {
   const params = useParams();
@@ -15,16 +16,16 @@ const MovieDetailPage = () => {
         Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY
       }
     };
-    axios.get(`https://api.themoviedb.org/3/movie/${params.id}?language=en-US`, options)
+    axios.get(`https://api.themoviedb.org/3/movie/${params.id}?language=ko-KR`, options)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         setMovieData(response.data);
       })
       .catch(err => console.error(err));
   }, [])
 
   const {id, original_title, overview, poster_path, vote_average, popularity, release_date} = movieData;
-  console.log(movieData);
+  // console.log(movieData);
   return (
     <>
       <MovieBackground url={`https://image.tmdb.org/t/p/w500/${poster_path}`}>
@@ -40,6 +41,7 @@ const MovieDetailPage = () => {
           </MovieInfoBox>
         </MovieDetailContainer>
       </MovieBackground>
+      <CastCrewInfo movieId={id}/>
     </>
   );
 };
