@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "../styles/movies.css";
 import MovieInfo from "./MovieInfo.jsx";
 import styled from "styled-components";
@@ -14,6 +14,9 @@ const Movies = (props) => {
   const closeInfo = () => {
     setIsHover(false);
   }
+  useEffect(() => {
+    console.log(props.data);
+  }, [])
 
   return (
     <Movie onMouseEnter={openInfo} onMouseLeave={closeInfo} onClick={() => {
@@ -25,7 +28,6 @@ const Movies = (props) => {
         <MovieTitle>{original_title}</MovieTitle>
         <MovieTitle>{vote_average}</MovieTitle>
       </MovieBasic>
-
     </Movie>
   );
 };
