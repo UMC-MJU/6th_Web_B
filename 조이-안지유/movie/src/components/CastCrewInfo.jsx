@@ -103,4 +103,8 @@ const PersonInfo = styled.p`
   color: white;
   font-size: 11px;
   margin: 2px 0;
+  max-width: 80px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `
