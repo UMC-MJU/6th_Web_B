@@ -30,6 +30,11 @@ const SignUp = () => {
         })} errors={errors}/>
         {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
 
+        <Input name="name" type="text" placeholder="아이디를 입력해주세요" {...register("id", {
+          required: "아이디를 입력해주세요!"
+        })} errors={errors}/>
+        {errors.id && <ErrorMessage>{errors.id.message}</ErrorMessage>}
+
         <Input name="email" type="email"
                placeholder="이메일을 입력해주세요" {...register("email", {
           required: "이메일을 입력해주세요!",
