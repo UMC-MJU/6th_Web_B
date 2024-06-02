@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 
-const SignUp = () => {
+const SignupPage = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -82,7 +82,7 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignupPage;
 
 const SignUpContainer = styled.div`
   display: flex;
