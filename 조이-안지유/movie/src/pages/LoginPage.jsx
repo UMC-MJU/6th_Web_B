@@ -8,14 +8,13 @@ const LoginPage = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: {errors, isValid},
   } = useForm({
     mode: "onChange" // 입력 필드가 변경될 때마다 유효성검사 실행
   });
 
   const onSubmit = (data) => {
-    if (Object.keys(errors).length === 0) { // 에러가 하나도 없으면 -> 유효성 검사 모두 통과했다는 의미
+    if (Object.keys(errors).length === 0) { // 에러가 하나도 없으면  -> 유효성 검사 모두 통과했다는 의미
       console.log(data);
       navigate(`/`);
     }

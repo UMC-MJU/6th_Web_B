@@ -18,14 +18,13 @@ const MovieDetailPage = () => {
     };
     axios.get(`https://api.themoviedb.org/3/movie/${params.id}?language=ko-KR`, options)
       .then(response => {
-        console.log(response);
         setMovieData(response.data);
       })
       .catch(err => console.error(err));
   }, [])
 
-  const {id, original_title, overview, poster_path, vote_average, popularity, release_date} = movieData;
-  console.log(movieData);
+  const {original_title, overview, poster_path, vote_average, popularity, release_date} = movieData;
+
   return (
     <>
       <MovieBackground url={`https://image.tmdb.org/t/p/w500/${poster_path}`}>
@@ -59,10 +58,10 @@ const MovieBackground = styled.div`
 const MovieDetailContainer = styled.div`
   display: flex;
   background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100vh;
   justify-content: center;
   align-items: center;
-  width: 1280px;
-  height: 99vh;
   gap: 70px;
 `
 
