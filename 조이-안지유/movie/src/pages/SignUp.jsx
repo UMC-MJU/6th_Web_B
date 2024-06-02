@@ -74,7 +74,9 @@ const SignUp = () => {
       </SignUpForm>
       <AdditionalBox>
         <AdditionalText>이미 아이디가 있으신가요?</AdditionalText>
-        <GoLoginText>로그인 페이지로 이동하기</GoLoginText>
+        <GoLoginText onClick={() => {
+          navigate(`/login`)
+        }}>로그인 페이지로 이동하기</GoLoginText>
       </AdditionalBox>
     </SignUpContainer>
   );
@@ -137,4 +139,5 @@ const AdditionalText = styled.p`
 
 const GoLoginText = styled(AdditionalText)`
   font-weight: bold;
+  cursor: pointer;
 `
