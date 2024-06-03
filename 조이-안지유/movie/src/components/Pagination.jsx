@@ -4,15 +4,16 @@ import styled from "styled-components";
 const Pagination = ({currentPage, totalPages, onPageChange}) => {
   console.log(currentPage, totalPages);
 
+
   return (
     <PaginationContainer>
       <MovePageBtn onClick={() => {
         onPageChange(currentPage - 1)
-      }}>&lt;</MovePageBtn>
+      }} disabled={currentPage === 1}>&lt;</MovePageBtn>
       <NowPageNumber>{currentPage}</NowPageNumber>
       <MovePageBtn onClick={() => {
         onPageChange(currentPage + 1)
-      }}>&gt;</MovePageBtn>
+      }} disabled={currentPage === totalPages}>&gt;</MovePageBtn>
     </PaginationContainer>
   );
 };
@@ -37,6 +38,11 @@ const MovePageBtn = styled.button`
   border: none;
   cursor: pointer;
   color: white;
+
+  &:disabled {
+    color: transparent;
+    cursor: not-allowed;
+  }
 `
 
 const NowPageNumber = styled.p`
