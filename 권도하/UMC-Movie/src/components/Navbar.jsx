@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; 
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import styled from 'styled-components';
 
 const NavbarContainer = styled.div`
@@ -12,6 +12,7 @@ const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color:rgba(15, 9, 59, 1);
 `;
 
 const Button = styled.button`
@@ -32,8 +33,10 @@ const Button = styled.button`
 const LeftButton = styled(Button)`
 `;
 
-const RightButton = styled(Button)`
+const SignInButton = styled(Button)`
   margin-left: 5px;
+  color: yellow;
+
 `;
 
 const RightButtonContainer = styled.div`
@@ -42,15 +45,28 @@ const RightButtonContainer = styled.div`
 `;
 
 function Navbar() {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleToggle = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
+
   return (
     <NavbarContainer>
-      <LeftButton as={Link} to="/">UMC Movie</LeftButton>
+      <LeftButton onClick={() => navigate("/")}>UMC Movie</LeftButton>
       <RightButtonContainer>
-        <Button as={Link} to="/signup">회원가입</Button> 
-        <Button as={Link} to="/popular">Popular</Button> 
-        <Button as={Link} to="/nowplaying">Now Playing</Button>
-        <Button as={Link} to="/toprated">Top Rated</Button>
-        <Button as={Link} to="/upcoming">Upcoming</Button>
+        <SignInButton onClick={() => {
+          navigate(isLoggedIn ? "/" : "/signin");
+          handleToggle();
+        }}>
+          {isLoggedIn ? '로그아웃' : '로그인'}
+        </SignInButton>
+        <Button onClick={() => navigate("/signup")}>회원가입</Button> 
+        <Button onClick={() => navigate("/popular")}>Popular</Button> 
+        <Button onClick={() => navigate("/nowplaying")}>Now Playing</Button>
+        <Button onClick={() => navigate("/toprated")}>Top Rated</Button>
+        <Button onClick={() => navigate("/upcoming")}>Upcoming</Button>
       </RightButtonContainer>
     </NavbarContainer>
   );

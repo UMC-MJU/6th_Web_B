@@ -1,4 +1,3 @@
-// Footer.jsx
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
@@ -12,13 +11,20 @@ const StyledFooter = styled.footer`
   color: #fff;
   padding: 5px;
   text-align: right;
+  background-color:rgba(15, 9, 59, 1);
+`;
+
+const FooterText = styled.div`
+  margin-right: 20px;
 `;
 
 const Footer = () => {
   const location = useLocation();
   return (
     <StyledFooter>
-      <div>https::/www.makeus.in/umc</div>
+      <FooterText>
+        <span>https://www.makeus.in/umc</span>
+      </FooterText>
     </StyledFooter>
   );
 }
