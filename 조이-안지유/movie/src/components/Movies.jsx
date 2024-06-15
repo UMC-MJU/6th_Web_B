@@ -1,27 +1,33 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "../styles/movies.css";
 import MovieInfo from "./MovieInfo.jsx";
 import styled from "styled-components";
+import {useNavigate} from "react-router-dom";
 
 const Movies = (props) => {
-  const {original_title, overview, poster_path, vote_average} = props.data;
+  const {id, original_title, overview, poster_path, vote_average} = props.data;
   const [isHover, setIsHover] = useState(false);
+  const navigate = useNavigate();
   const openInfo = () => {
     setIsHover(true);
   }
   const closeInfo = () => {
     setIsHover(false);
   }
+  useEffect(() => {
+    console.log(props.data);
+  }, [])
 
   return (
-    <Movie onMouseEnter={openInfo} onMouseLeave={closeInfo}>
+    <Movie onMouseEnter={openInfo} onMouseLeave={closeInfo} onClick={() => {
+      navigate(`/movie/${id}`)
+    }}>
       {isHover && <MovieInfo title={original_title} info={overview}/>}
       <MoviePoster src={`https://image.tmdb.org/t/p/w500/${poster_path}`}/>
       <MovieBasic>
         <MovieTitle>{original_title}</MovieTitle>
         <MovieTitle>{vote_average}</MovieTitle>
       </MovieBasic>
-
     </Movie>
   );
 };

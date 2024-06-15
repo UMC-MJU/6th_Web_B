@@ -10,6 +10,7 @@ const UpComing = () => {
     const options = {
       method: 'GET',
       url: 'https://api.themoviedb.org/3/movie/upcoming',
+      params: {language: 'ko-KR'},
       headers: {
         accept: 'application/json',
         Authorization: 'Bearer ' + import.meta.env.VITE_APP_KEY
@@ -38,6 +39,7 @@ export default UpComing;
 
 const MovieContainer = styled.div`
   display: flex;
+  justify-content: center;
   background-color: rgb(33, 35, 72);
   padding: 0 5px;
   width: 100%;
