@@ -8,19 +8,12 @@ import PopularPage from './pages/PopularPage';
 import TopRatePage from './pages/TopRatePage';
 import UpComing from './pages/UpComing';
 import Navbar from './components/Navbar';
-import Footbar from './components/Footbar';
 import MovieDetailPage from './pages/MovieDetailPage'
+import NotFoundPage from './pages/NotFoundPage';
+import Register from './pages/RegisterPage';
 
 // movie components를 받는 container
 function App() {
-  // const [movies, setMovies] = useState([]);
-
-  // useEffect(() => {
-  //   fetch('https://api.themoviedb.org/3/discover/movie?api_key=8ef789919cffed29e0e0fac9a90d79bc')
-  //     .then(response => response.json())
-  //     .then(data => setMovies(data))
-  //     .catch(error => console.error('API 호출 중 오류 발생:', error));
-  // }, []);
 
   return (
     <div className='root-wrap'>
@@ -29,38 +22,16 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/register" element={<Register/>} />
           <Route path="/nowplaying" element={<NowPlayingPage />} />
-          <Route path="/:title" element={<MovieDetailPage/>}/>
+          <Route path="/movie/:id" element={<MovieDetailPage/>}/>
           <Route path="/popular" element={<PopularPage />} />
           <Route path="/toprated" element={<TopRatePage />} />
           <Route path="/upcoming" element={<UpComing />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
-        <Footbar />
       </BrowserRouter>
     </div>
-
-    // <div>
-    //   {movies.results ? (
-    //     <div className='body-container'>
-    //     {
-    //     movies.results.map((item)=>{
-    //         return (
-    //           <Movie
-    //             key={item.id}
-    //             title = {item.title}
-    //             poster_path= {item.poster_path}
-    //             vote_average={item.vote_average}
-    //             overview={item.overview}
-    //             />
-    //         );
-    //     })
-    //   }
-    //   </div>
-    //   ) : (
-    //     <p>영화 로딩 중...</p>
-    //   )}
-
-    // </div>
   );
 }
 

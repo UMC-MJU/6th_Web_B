@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import Movie from './Movie';
 
 export default function MovieList({apiUrl}) {
@@ -16,11 +17,12 @@ export default function MovieList({apiUrl}) {
         {movies.results ? (
           movies.results.map((item) => (
             <Movie
-              key={item.id}
+              id={item.id}
               title={item.title}
               poster_path={item.poster_path}
               vote_average={item.vote_average}
               overview={item.overview}
+              release_date={item.release_date}
             />
           ))
         ) : (
