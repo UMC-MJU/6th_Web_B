@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { FaStar } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Loading2 from '../Loading2';
 
@@ -176,14 +176,15 @@ function MainPage() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isDetailLoading, setIsDetailLoading] = useState(false);
+  const [userName, setUserName] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (searchKeyword) {
-      setIsLoading(true); 
-      fetchMovies(searchKeyword);
+    const username = localStorage.getItem('username');
+    if (username) {
+      setUserName(username);
     }
-  }, [searchKeyword]);
+  }, []);
 
   const fetchMovies = async (keyword) => {
     try {
@@ -210,7 +211,7 @@ function MainPage() {
     setTimeout(() => {
       setIsDetailLoading(false);
       navigate(`/movie/${movieId}`);
-    }, 500); 
+    }, 500);
   };
 
   return (
@@ -218,20 +219,18 @@ function MainPage() {
       <GlobalStyle />
       {isDetailLoading && <Loading2 />}
       <MainPageContainer>
-        <WelcomeMessage>환영합니다</WelcomeMessage>
+        <WelcomeMessage>{userName ? `${userName}님 환영합니다!` : '환영합니다!'}</WelcomeMessage>
       </MainPageContainer>
       <LowerSection>
         <Text>Find your movies!</Text>
         <SearchInput type="text" onChange={debouncedHandleSearchInputChange} />
         {isLoading ? (
-          <div></div> //수정
+          <Loading2 /> 
         ) : (
           <MovieGrid>
             {searchResults.map((movie) => (
               <MovieItem key={movie.id}>
-                <div
-                  onClick={() => handleMovieClick(movie.id)}
-                  >
+                <div onClick={() => handleMovieClick(movie.id)}>
                   <MovieImage
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
