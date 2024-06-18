@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import '../App.css';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -46,18 +45,32 @@ const SubmitBtn = styled.button`
   background-color: ${({ isValid }) => (isValid ? 'yellow' : '#fff')};
 `;
 
-function Loginpage() {
+function LoginPage({ onLogin }) {
   const [ID, setID] = useState('');
   const [password, setPassword] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [movieData, setMovieData] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
+    try {
+      //404 오류가 계속 나옴 -> 경로 문제 
+      const response = await axios.post('/auth/login', { username: ID, password });
+      const { token, username } = response.data;
+  
+      // 로그인 성공 시 토큰과 사용자 이름을 로컬스토리지에 저장
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+  
+      // 로그인 상태 업데이트를 위한 콜백 호출
+      onLogin();
+    } catch (error) {
+      console.error('로그인 오류:', error);
+      // 로그인 오류 처리
+    }
   };
-
+  
+//이거 나중에 지워리~ 확인해보고;;
   const validateName = (name) => {
     if (!name.trim()) {
       return '이름을 입력해주세요.';
@@ -80,30 +93,6 @@ function Loginpage() {
     return '';
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setTimeout(async () => {
-          const response = await axios.get(
-            'https://api.themoviedb.org/3/movie/popular',
-            {
-              params: {
-                api_key: '46a397cf7e08676521ec72f5fa736dd3',
-              },
-            }
-          );
-          setMovieData(response.data.results);
-          setLoading(false); // -> 데이터 가져오기 완료 후 로딩 상태 변경
-        }, 500); // 로딩 시간이 넘 짧아서 확인할 수 없어 0.5초로 지연시켜 확인한다.
-      } catch (error) {
-        console.error('Error fetching popular movies:', error);
-        setLoading(false); // 에러 발생 시 로딩 상태 변경
-      }
-    };
-
-    fetchData();
-  }, []);
-
   const isValid = !validateName(ID) && !validatePassword(password);
 
   return (
@@ -116,7 +105,6 @@ function Loginpage() {
               type="text"
               placeholder="아이디를 입력해주세요"
               value={ID}
-              //실시간으로 에러문이 변동될 때 
               onChange={(e) => setID(e.target.value)}
             />
             {submitted && validateName(ID) && (
@@ -141,4 +129,4 @@ function Loginpage() {
   );
 }
 
-export default Loginpage;
+export default LoginPage;
