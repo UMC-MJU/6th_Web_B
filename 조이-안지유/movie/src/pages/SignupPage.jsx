@@ -102,13 +102,20 @@ const Title = styled.h1`
 const SignUpForm = styled.form`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 15px;
+  width: 100%;
 `
 
 const Input = styled.input`
-  width: 30vw;
+  width: 330px;
   height: 35px;
   border-radius: 30px;
+  margin: 0 auto;
+
+  @media (max-width: 330px) {
+    width: 95vw;
+  }
 `
 
 const ErrorMessage = styled.p`
@@ -119,11 +126,15 @@ const ErrorMessage = styled.p`
 
 
 const SubmitBtn = styled.button`
-  width: 30vw;
+  width: 330px;
   height: 45px;
   border-radius: 30px;
-  margin-top: 20px;
   cursor: pointer;
+  margin: 20px 0 auto;
+
+  @media (max-width: 330px) {
+    width: 95vw;
+  }
 `
 
 const AdditionalBox = styled.div`
