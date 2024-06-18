@@ -11,7 +11,7 @@ const StyledPoster = styled.div`
   color: white;
   position: relative;
   display: inline-block;
-  cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능함을 나타냄 */
+  cursor: pointer;
 
   img {
     max-width: 100%;

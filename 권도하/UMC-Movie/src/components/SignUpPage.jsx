@@ -35,7 +35,6 @@ const Button = styled.button`
   color: black;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   transition: background-color 0.3s ease;
-
   background-color: ${props => props.disabled ? 'white' : 'yellow'};
 `;
 
