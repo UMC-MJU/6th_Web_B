@@ -112,12 +112,12 @@ const SignUpForm = styled.form`
 `
 
 const Input = styled.input`
-  width: 330px;
+  width: 400px;
   height: 5vh;
   border-radius: 30px;
   margin: 0 auto;
 
-  @media (max-width: 330px) {
+  @media (max-width: 400px) {
     width: 95vw;
     height: 4vh;
   }
@@ -131,13 +131,13 @@ const ErrorMessage = styled.p`
 
 
 const SubmitBtn = styled.button`
-  width: 330px;
+  width: 410px;
   height: 6vh;
   border-radius: 30px;
   cursor: pointer;
   margin: 2vh 0 auto;
 
-  @media (max-width: 330px) {
+  @media (max-width: 400px) {
     width: 95vw;
     height: 5vh;
   }
