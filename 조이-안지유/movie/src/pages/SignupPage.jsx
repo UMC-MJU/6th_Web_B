@@ -97,24 +97,29 @@ const Title = styled.h1`
   color: white;
   font-size: 20px;
   margin: 40px 0 50px 0;
+
+  @media (max-width: 330px) {
+    font-size: calc(20px * 0.8);
+  }
 `
 
 const SignUpForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 3vh;
   width: 100%;
 `
 
 const Input = styled.input`
   width: 330px;
-  height: 35px;
+  height: 5vh;
   border-radius: 30px;
   margin: 0 auto;
 
   @media (max-width: 330px) {
     width: 95vw;
+    height: 4vh;
   }
 `
 
@@ -127,20 +132,27 @@ const ErrorMessage = styled.p`
 
 const SubmitBtn = styled.button`
   width: 330px;
-  height: 45px;
+  height: 6vh;
   border-radius: 30px;
   cursor: pointer;
-  margin: 20px 0 auto;
+  margin: 2vh 0 auto;
 
   @media (max-width: 330px) {
     width: 95vw;
+    height: 5vh;
   }
 `
 
 const AdditionalBox = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 3vw;
   margin-top: 30px;
+
+  @media (max-width: 330px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
 `
 
 const AdditionalText = styled.p`
