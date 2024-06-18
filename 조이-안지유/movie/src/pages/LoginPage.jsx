@@ -58,6 +58,10 @@ const Title = styled.h1`
   color: white;
   font-size: 20px;
   margin: 40px 0 50px 0;
+
+  @media (max-width: 330px) {
+    font-size: calc(20px * 0.8);
+  }
 `
 
 const LogInForm = styled.form`
@@ -67,9 +71,14 @@ const LogInForm = styled.form`
 `
 
 const Input = styled.input`
-  width: 30vw;
-  height: 35px;
+  width: 400px;
+  height: 5vh;
   border-radius: 30px;
+  margin: 0 auto;
+
+  @media (max-width: 400px) {
+    width: 95vw;
+  }
 `
 
 const ErrorMessage = styled.p`
@@ -80,9 +89,13 @@ const ErrorMessage = styled.p`
 
 
 const SubmitBtn = styled.button`
-  width: 30vw;
-  height: 45px;
+  width: 400px;
+  height: 5vh;
   border-radius: 30px;
   margin-top: 20px;
   cursor: pointer;
+
+  @media (max-width: 400px) {
+    width: 95vw;
+  }
 `
