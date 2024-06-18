@@ -23,6 +23,7 @@ export default MainPage;
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100vh;
 `
 
 const BannerContainer = styled.div`
@@ -36,16 +37,24 @@ const BannerContainer = styled.div`
 `
 const TitleText = styled.h1`
   color: white;
+  text-align: center;
+  max-width: 100%;
+  max-height: 100%;
+  font-size: 4vw;
+
+  @media (max-height: 400px) {
+    font-size: 3vh;
+  }
+
 `
 
 const SearchContainer = styled(BannerContainer)`
-  height: 50vh;
   background: rgb(26, 35, 78);
   flex-direction: column;
+  justify-content: center;
 `
 
 const SearchText = styled(TitleText)`
-  font-size: 38px;
-  margin-top: -130px;
-  margin-bottom: 50px;
+  margin: 0;
+  padding-bottom: 18vh;
 `
