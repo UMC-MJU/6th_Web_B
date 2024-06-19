@@ -21,8 +21,8 @@ export const DetailContainer = styled.div`
   min-height: 100vh;
   margin: 0;
   display: flex;
-  justify-content: center;
-  align-items: ${(props) => (props.align ? "flex-start" : "center")};
+  justify-content: ${(props) => (props.align ? "flex-start" : "center")};
+  align-items: center;
   background-color: #1f2141;
   position: relative;
   flex-direction: column;

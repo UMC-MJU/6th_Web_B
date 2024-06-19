@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -32,16 +33,22 @@ const LogoWrapper = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  color:  ${(props) => props.color || "white"};
+  color: ${(props) => props.color || "white"};
   text-decoration: none;
 `;
 
 export default function Navbar() {
-    const [color, setColor] = useState('white');
+  const [color, setColor] = useState("white");
+  const [cookies, removeCookies] = useCookies(["user"]);
+  const isLoggedIn = !!cookies.user; // 쿠키에 정보가 있으면 로그인 된 것
 
-    const handleClick = () => {
-      setColor('#E1C35C');
-    };
+  const handleClick = () => {
+    setColor("#E1C35C");
+  };
+
+  const logoutE = () => {
+    removeCookies('user');
+  }
 
   return (
     <NavContainer>
@@ -53,9 +60,22 @@ export default function Navbar() {
         </LogoWrapper>
         <ButtonWrapper>
           <ul>
-            <li>
-              <StyledLink to="/register" color={color} onClick={handleClick}>회원가입</StyledLink>
-            </li>
+            {!isLoggedIn ? (
+              <>
+                <li>
+                  <StyledLink to="/login">로그인</StyledLink>
+                </li>
+                <li>
+                  <StyledLink to="/register">회원가입</StyledLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <StyledLink to="/" onClick={logoutE}>로그아웃</StyledLink>
+                </li>
+              </>
+            )}
             <li>
               <StyledLink to="/popular">Popular</StyledLink>
             </li>

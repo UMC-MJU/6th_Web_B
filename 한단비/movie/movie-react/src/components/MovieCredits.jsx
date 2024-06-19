@@ -11,8 +11,7 @@ const MovieCredits = () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZWY3ODk5MTljZmZlZDI5ZTBlMGZhYzlhOTBkNzliYyIsInN1YiI6IjY2MWNiMDcwNjBjNTFkMDE4NjRlNzEyMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RDERgMt1Hwrb7hjKzyNo9ShZrwQmnkBNc04Jpp69aQQ",
+        Authorization: "Bearer process.env.REACT_APP_TOKEN",
       },
     };
 
