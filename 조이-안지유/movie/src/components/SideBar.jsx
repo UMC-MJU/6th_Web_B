@@ -1,26 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
-import {CategoryTitle} from "./Navbar.jsx";
 import {useNavigate} from "react-router-dom";
 
 const SideBar = () => {
   const navigate = useNavigate();
+
+
+  const handleCategoryClick = (path) => {
+    navigate(path);
+  }
   return (
     <SideBarContainer>
       <CategoryMenu onClick={() => {
-        navigate('/signup')
+        handleCategoryClick('/signup')
       }}>회원가입</CategoryMenu>
       <CategoryMenu onClick={() => {
-        navigate('/popular')
+        handleCategoryClick('/popular')
       }}>Popular</CategoryMenu>
       <CategoryMenu onClick={() => {
-        navigate('/nowplaying')
+        handleCategoryClick('/nowplaying')
       }}>Now Playing</CategoryMenu>
       <CategoryMenu onClick={() => {
-        navigate('/toprated')
+        handleCategoryClick('/toprated')
       }}>Top Rated</CategoryMenu>
       <CategoryMenu onClick={() => {
-        navigate('/upcoming')
+        handleCategoryClick('/upcoming')
       }}>Upcoming</CategoryMenu>
     </SideBarContainer>
   );
@@ -39,7 +43,18 @@ const SideBarContainer = styled.div`
   gap: 5px;
 `
 
-const CategoryMenu = styled(CategoryTitle)`
+const CategoryMenu = styled.button`
   padding: 10px 0 10px 0;
-  //
+  color: white;
+  margin: 0 10px;
+  font-size: 13px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+
+  &:hover {
+    font-size: 15px;
+    color: gold;
+    font-weight: bold;
+  }
 `
