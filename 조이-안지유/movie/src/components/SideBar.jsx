@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = ({setShowCategory}) => {
   const navigate = useNavigate();
-
 
   const handleCategoryClick = (path) => {
     navigate(path);
+    setShowCategory(false);
   }
   return (
     <SideBarContainer>

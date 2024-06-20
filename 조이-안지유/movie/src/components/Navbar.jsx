@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 import {FiMenu} from "react-icons/fi";
@@ -35,8 +35,11 @@ const Navbar = () => {
   const clickSideBar = () => {
     setShowCategory(!showCategory);
     console.log('사이드바 클릭!');
-    console.log(showCategory);
   }
+
+  useEffect(() => {
+    console.log(showCategory);
+  }, [showCategory]);
 
   return (
     <>
@@ -62,7 +65,7 @@ const Navbar = () => {
         <LogoTitle onClick={goMain}>UMC Movie</LogoTitle>
         <FiMenu style={styles.icon} onClick={clickSideBar}/>
       </SideBarContainer>
-      {showCategory && (<SideBar/>)}
+      {showCategory && <SideBar setShowCategory={setShowCategory}/>}
     </>
   );
 };
@@ -113,7 +116,7 @@ const MoveCategory = styled.div`
   display: flex;
 `
 
-export const CategoryTitle = styled.button`
+const CategoryTitle = styled.button`
   color: white;
   margin: 0 10px;
   font-size: 13px;
