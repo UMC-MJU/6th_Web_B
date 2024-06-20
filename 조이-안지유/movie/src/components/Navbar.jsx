@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 import {FiMenu} from "react-icons/fi";
+import SideBar from "./SideBar.jsx";
 
 
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState("로그인");
+  const [showCategory, setShowCategory] = useState(false);
   const navigate = useNavigate();
 
 
@@ -21,6 +23,20 @@ const Navbar = () => {
     }
     navigate(`/signup`);
   };
+
+  const styles = {
+    icon: {
+      width: '50px',
+      color: 'white',
+      cursor: 'pointer',
+    }
+  };
+
+  const clickSideBar = () => {
+    setShowCategory(!showCategory);
+    console.log('사이드바 클릭!');
+    console.log(showCategory);
+  }
 
   return (
     <>
@@ -44,8 +60,9 @@ const Navbar = () => {
       </HeaderContainer>
       <SideBarContainer>
         <LogoTitle onClick={goMain}>UMC Movie</LogoTitle>
-        <FiMenu/>
-      </SideBarContainer>å
+        <FiMenu style={styles.icon} onClick={clickSideBar}/>
+      </SideBarContainer>
+      {showCategory && (<SideBar/>)}
     </>
   );
 };
@@ -96,7 +113,7 @@ const MoveCategory = styled.div`
   display: flex;
 `
 
-const CategoryTitle = styled.button`
+export const CategoryTitle = styled.button`
   color: white;
   margin: 0 10px;
   font-size: 13px;
