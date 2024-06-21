@@ -44,7 +44,7 @@ const SideBarContainer = styled.div`
 `
 
 const CategoryMenu = styled.button`
-  padding: 10px 0 10px 30px;
+  padding: 15px 0 10px 30px;
   text-align: left;
   color: white;
   font-size: 14px;
