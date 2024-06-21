@@ -44,12 +44,12 @@ const SideBarContainer = styled.div`
 `
 
 const CategoryMenu = styled.button`
-  padding: 10px 0 10px 0;
+  padding: 10px 0 10px 30px;
+  text-align: left;
   color: white;
-  margin: 0 10px;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
-  background: transparent;
+  background: none;
   border: none;
 
   &:hover {
