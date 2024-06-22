@@ -85,7 +85,7 @@ const MovieGrid = styled.div`
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
-
+/*모바일일때*/
   @media screen and (max-width: 480px) {
     grid-template-columns: 1fr;
   }

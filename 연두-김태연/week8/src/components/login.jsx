@@ -73,23 +73,23 @@ function LoginPage({ onLogin }) {
     e.preventDefault();
     setSubmitted(true);
     try {
-      //404 오류가 계속 나옴 -> 경로 문제 
-      const response = await axios.post('/auth/login', { username: ID, password });
+      //404 오류가 계속 나옴 -> API 명세서 보면 유효하지 않은 토큰일시 (Error 404) 나온다고 한다~ 비번 받어~
+      const response = await axios.post('http://localhost:8080/auth/login', { username: ID, password: password });
       const { token, username } = response.data;
   
       // 로그인 성공 시 토큰과 사용자 이름을 로컬스토리지에 저장
       localStorage.setItem('token', token);
       localStorage.setItem('username', username);
-  
+      localStorage.setItem('password', password);
       // 로그인 상태 업데이트를 위한 콜백 호출
       onLogin();
     } catch (error) {
       console.error('로그인 오류:', error);
-      // 로그인 오류 처리
+     
     }
   };
   
-//이거 나중에 지워리~ 확인해보고;;
+// 로그인 유효성 검사 유지해라~
   const validateName = (name) => {
     if (!name.trim()) {
       return '이름을 입력해주세요.';

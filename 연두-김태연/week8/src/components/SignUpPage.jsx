@@ -127,6 +127,7 @@ function SignUpPage() {
     if (!validate()) return;
 
     try {
+      //서버 실행시키면 8080 문제 해결할 수....있었따....
       const response = await axios.post('http://localhost:8080/auth/signup', {
         name: formData.name,
         username: formData.username,
