@@ -1,0 +1,46 @@
+
+*{
+    margin:0;
+}
+welcomecontainer{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height:20vw;
+    width:100vw;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+}
+
+welcome{
+    color:white;
+    font-size: 2vw;
+    font-weight: bold;
+}
+bluecontainer{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 45, 0.937);
+    color:white;
+    height:70vh;
+    width:100vw;
+    text-align: center;
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center;
+
+}
+searchtext{
+    /* display: block; */
+    text-align: center;
+    font-weight:bolder;
+    font-size: 2vw;
+    
+}
+input{
+    height:30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    width:20%;
+}

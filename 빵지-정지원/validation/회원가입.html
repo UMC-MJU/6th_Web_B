@@ -1,0 +1,66 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>회원가입</title>
+        <link rel="stylesheet" href="회원가입.css">
+        <script src="회원가입.js"></script>
+    </head>
+    <body>
+        <div class="box">
+                <h2 style="text-align:center">회원가입</h2>
+                <hr>
+
+                <div style="margin:20px">
+                    <form>
+                        <div>
+                            <label for="name">이름<br></label>
+                            <input type ="text" class="input" id="name"  required>
+                            <div class="validation" id="name_validation"></div>
+                        </div>
+                        
+                        <div>
+                            <label for="email">이메일<br></label>
+                            <input type="email" class="input" id="email" >
+                            <div class="validation" id="email_validation"></div>
+                        </div>
+
+                        <div>
+                            <label for="age">나이<br></label>
+                            <input type="text" class="input" id="age" >
+                            <div class="validation" id="age_validation"></div>
+                        </div>
+                        
+                        <div>
+                            <label for="password">비밀번호<br></label>
+                            <input type="password" class="input" id="password" >
+                            <div class="validation" id="password_validation"></div>
+                        </div>
+
+                        <div>
+                            <label for="passweord_check">비밀번호 확인<br></label>
+                            <input type="password" class="input" id="passweord_check" >
+                            <div class="validation" id="password_check_validation"></div>
+                        </div>
+
+                        
+                        <br>
+                        
+                    </form>
+                    <button type="submit" class="button">가입하기</button>
+                    <div class="popup">
+                        <h3>가입성공</h3>
+                        <p>umc 챌린지 가입을 축하드립니다</p>
+                        <button id="close">닫기</button>
+                    </div>
+                </div>
+                
+                
+                
+            
+            
+        </div>
+        
+    </body>
+    </html>

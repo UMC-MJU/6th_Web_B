@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <script>
+        var number = 0; // 변수 number를 0으로 초기화
+
+        function p() {
+            number += 1; 
+            document.querySelector("#number").innerText = number; 
+            console.log("increase가 클릭됨"); 
+        }
+
+        function m() {
+            number -= 1; // number를 1 감소시킵니다.
+            document.querySelector("#number").innerText = number; // 텍스트 업데이트
+            console.log("decrease가 클릭됨"); 
+        }
+    </script>
+</head>
+<body>
+    <h2 id="number">0</h2>
+    <button id="increase" onclick="p()">+1</button>
+    <button id="decrease" onclick="m()">-1</button>
+</body>
+</html>
