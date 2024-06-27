@@ -97,18 +97,30 @@ const Title = styled.h1`
   color: white;
   font-size: 20px;
   margin: 40px 0 50px 0;
+
+  @media (max-width: 330px) {
+    font-size: calc(20px * 0.8);
+  }
 `
 
 const SignUpForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  gap: 3vh;
+  width: 100%;
 `
 
 const Input = styled.input`
-  width: 30vw;
-  height: 35px;
+  width: 400px;
+  height: 5vh;
   border-radius: 30px;
+  margin: 0 auto;
+
+  @media (max-width: 400px) {
+    width: 95vw;
+    height: 4vh;
+  }
 `
 
 const ErrorMessage = styled.p`
@@ -119,17 +131,28 @@ const ErrorMessage = styled.p`
 
 
 const SubmitBtn = styled.button`
-  width: 30vw;
-  height: 45px;
+  width: 410px;
+  height: 6vh;
   border-radius: 30px;
-  margin-top: 20px;
   cursor: pointer;
+  margin: 2vh 0 auto;
+
+  @media (max-width: 400px) {
+    width: 95vw;
+    height: 5vh;
+  }
 `
 
 const AdditionalBox = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 3vw;
   margin-top: 30px;
+
+  @media (max-width: 330px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
 `
 
 const AdditionalText = styled.p`

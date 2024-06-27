@@ -58,15 +58,23 @@ const SearchBox = styled.div`
   align-items: center;
   padding-left: 40px;
   gap: 20px;
-  background: orange;
+  //background: orange;
   position: absolute;
 `
 
 const SearchInput = styled.input`
-  width: 370px;
-  height: 35px;
+  width: 50vw;
+  height: 5vh;
   border-radius: 20px;
   border: none;
+
+  @media (max-width: 450px) {
+    height: 4vh;
+  }
+
+  @media (max-width: 300px) {
+    height: 3vh;
+  }
 `
 
 const SearchBtn = styled.button`
