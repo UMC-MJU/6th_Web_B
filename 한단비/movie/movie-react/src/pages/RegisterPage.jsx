@@ -4,6 +4,7 @@ import { DetailContainer } from "./MovieDetailPage";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ApiRegister from "../components/Register";
+import { theme } from "../theme";
 
 const Register = () => {
   const {
@@ -28,9 +29,9 @@ const Register = () => {
           data.password,
           data.matchPassword
         );
-        console.log('제출 성공', result);
+        console.log("제출 성공", result);
         alert("회원가입을 축하합니다!");
-        navigate('/login');
+        navigate("/login");
       } catch (error) {
         console.log("api 연동 실패");
       }
@@ -184,18 +185,101 @@ const Register = () => {
 
 export default Register;
 
+// export const Container = styled.form`
+//   width: 650px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+//   gap: 2rem;
+//   margin-top: 50px;
+// `;
+
+// export const Title = styled.h1`
+//   font-size: 20px;
+//   color: white;
+//   font-weight: 600;
+//   text-align: center;
+// `;
+
+// export const InputContainer = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+//   gap: 1.25rem;
+// `;
+
+// export const InputWrapper = styled.div`
+//   width: 90%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+//   gap: 1rem;
+// `;
+// export const InputValue = styled.input`
+//   width: 80%;
+//   border: none;
+//   outline: none;
+//   font-weight: 600;
+//   line-height: 1.5rem;
+//   padding: 0.75rem 1.25rem;
+//   border-radius: 30px;
+// `;
+
+// export const SubmitButton = styled.button`
+//   width: 80%;
+//   border-radius: 30px;
+//   height: 50px;
+//   border: none;
+//   background-color: ${(props) => (props.back ? "#FEC623" : "white")};
+//   font-size: 20px;
+//   font-weight: 700;
+//   color: 'white'};
+// `;
+
+// export const ErrorText = styled.div`
+//   color: #da353a;
+//   text-align: left;
+//   align-self: flex-start;
+//   margin-left: 50px;
+// `;
+
+// const ForUserContainer = styled.div`
+//   widht: 100%;
+//   display: flex;
+//   gap: 20px;
+//   margin-top: 20px;
+// `;
+
+// const ForUser = styled.h1`
+//   color: white;
+//   font-size: 18px;
+//   align-self: center;
+// `;
+
+// const MovePage = styled.button`
+//   background: none;
+//   border: none;
+//   color: white;
+//   font-weight: 700;
+//   font-size: 20px;
+// `;
 export const Container = styled.form`
-  width: 650px;
+  width: 80%;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
-  margin-top: 50px;
+  margin-top: 5%;
 `;
 
 export const Title = styled.h1`
-  font-size: 20px;
+  font-size: 2rem;
   color: white;
   font-weight: 600;
   text-align: center;
@@ -218,6 +302,7 @@ export const InputWrapper = styled.div`
   align-items: center;
   gap: 1rem;
 `;
+
 export const InputValue = styled.input`
   width: 80%;
   border: none;
@@ -231,10 +316,10 @@ export const InputValue = styled.input`
 export const SubmitButton = styled.button`
   width: 80%;
   border-radius: 30px;
-  height: 50px;
+  height: 3rem;
   border: none;
   background-color: ${(props) => (props.back ? "#FEC623" : "white")};
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: 700;
   color: 'white'};
 `;
@@ -243,19 +328,24 @@ export const ErrorText = styled.div`
   color: #da353a;
   text-align: left;
   align-self: flex-start;
-  margin-left: 50px;
+  margin-left: 5%;
 `;
 
 const ForUserContainer = styled.div`
-  widht: 100%;
+  width: 100%;
   display: flex;
-  gap: 20px;
-  margin-top: 20px;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+
+  ${theme.media.mobile`
+      flex-direction: column;
+    `}
 `;
 
 const ForUser = styled.h1`
   color: white;
-  font-size: 18px;
+  font-size: 1rem;
   align-self: center;
 `;
 
@@ -264,5 +354,5 @@ const MovePage = styled.button`
   border: none;
   color: white;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.2rem;
 `;

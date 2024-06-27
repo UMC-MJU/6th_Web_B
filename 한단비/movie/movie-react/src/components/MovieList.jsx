@@ -99,23 +99,24 @@ export default function MovieList({
       {/* {loading ? (
         <Loading />
       ) : ( */}
-        <MovieContainer>
-          {movies.length > 0 ? (
-            movies.map((item) => (
-              <Movie
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                poster_path={item.poster_path}
-                vote_average={item.vote_average}
-                overview={item.overview}
-                release_date={item.release_date}
-              />
-            ))
-          ) : (
-            <p>영화 로딩 중..</p>
-          )}
-        </MovieContainer>
+      <MovieContainer>
+        {movies && movies.length > 0 ? (
+          movies.map((item) => (
+            <Movie
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              poster_path={item.poster_path}
+              vote_average={item.vote_average}
+              overview={item.overview}
+              release_date={item.release_date}
+            />
+          ))
+        ) : (
+          <p>영화 로딩 중...</p>
+        )}
+      </MovieContainer>
+
       {/* )} */}
       {isPagination && (
         <PaginationList>

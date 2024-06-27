@@ -3,6 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { IMG_BASE_URL } from "../components/Movie";
 import styled from "styled-components";
 import MovieCredits from "../components/MovieCredits";
+import { theme } from "../theme";
 
 const BackgroundImage = styled.div`
   width: 100%;
@@ -26,6 +27,7 @@ export const DetailContainer = styled.div`
   background-color: #1f2141;
   position: relative;
   flex-direction: column;
+  overflow: auto;
 `;
 
 export const DetailWrapper = styled.div`
@@ -36,6 +38,10 @@ export const DetailWrapper = styled.div`
   align-items: center;
   gap: 50px;
   z-index: 1;
+
+  ${theme.media.mobile`
+    flex-direction: column;
+    `}
 `;
 
 export const DetailInfo = styled.div`
@@ -67,6 +73,14 @@ const CreditContainer = styled.div`
   height: 100%;
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #1f2141;
+`
 export default function MovieDetailPage() {
   const { id } = useParams(); // url로 넘겨준 영화 이름
   const { state } = useLocation(); // navigate hook을 통해 넘겨준 props
@@ -75,7 +89,7 @@ export default function MovieDetailPage() {
   console.log(state);
 
   return (
-    <div>
+    <Container>
       <DetailContainer>
         <BackgroundImage bgImage={IMG_BASE_URL + state.poster_path} />
         <DetailWrapper>
@@ -105,6 +119,6 @@ export default function MovieDetailPage() {
         </DetailWrapper>
       </DetailContainer>
       <MovieCredits />
-    </div>
+    </Container>
   );
 }
