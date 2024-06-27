@@ -13,6 +13,7 @@ const NavbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color:rgba(15, 9, 59, 1);
+  z-index:10;
 `;
 
 const Button = styled.button`
