@@ -11,26 +11,31 @@ import Navbar from './components/Navbar';
 import MovieDetailPage from './pages/MovieDetailPage'
 import NotFoundPage from './pages/NotFoundPage';
 import Register from './pages/RegisterPage';
+import Login from './pages/Login';
+import { CookiesProvider } from 'react-cookie';
 
 // movie components를 받는 container
 function App() {
 
   return (
     <div className='root-wrap'>
-      <BrowserRouter>
-        {/* routing에 영향을 받지 않고, 고정되고 싶은 것은 <Routes> 밖에 있어야 함! */}
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/nowplaying" element={<NowPlayingPage />} />
-          <Route path="/movie/:id" element={<MovieDetailPage/>}/>
-          <Route path="/popular" element={<PopularPage />} />
-          <Route path="/toprated" element={<TopRatePage />} />
-          <Route path="/upcoming" element={<UpComing />} />
-          <Route path="/*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
+      <CookiesProvider>
+        <BrowserRouter>
+          {/* routing에 영향을 받지 않고, 고정되고 싶은 것은 <Routes> 밖에 있어야 함! */}
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/register" element={<Register/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/nowplaying" element={<NowPlayingPage />} />
+            <Route path="/movie/:id" element={<MovieDetailPage/>}/>
+            <Route path="/popular" element={<PopularPage />} />
+            <Route path="/toprated" element={<TopRatePage />} />
+            <Route path="/upcoming" element={<UpComing />} />
+            <Route path="/*" element={<NotFoundPage />} />
+          </Routes>
+        </BrowserRouter>
+      </CookiesProvider>
     </div>
   );
 }

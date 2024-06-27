@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { DetailContainer } from "./MovieDetailPage";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import ApiRegister from "../components/Register";
+import { theme } from "../theme";
 
 const Register = () => {
   const {
@@ -15,11 +17,24 @@ const Register = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
     if (isValid) {
-      console.log(data);
-      alert("회원가입을 축하합니다!");
+      try {
+        const result = await ApiRegister(
+          data.name,
+          data.email,
+          data.age,
+          data.id,
+          data.password,
+          data.matchPassword
+        );
+        console.log("제출 성공", result);
+        alert("회원가입을 축하합니다!");
+        navigate("/login");
+      } catch (error) {
+        console.log("api 연동 실패");
+      }
     } else {
       console.log("제출 실패");
     }
@@ -38,6 +53,11 @@ const Register = () => {
       value: 6,
       message: "이름은 2글자 이상 6글자 이하여야 합니다.",
     },
+  });
+
+  // 아이디 유효성
+  const idRegister = register("id", {
+    required: { value: true, message: "아이디를 입력해주세요." },
   });
 
   // 이메일 유효성 검사
@@ -81,6 +101,12 @@ const Register = () => {
       value === getValues("password") || "비밀번호가 일치하지 않습니다.", // 수정된 부분
   });
 
+  // 로그인 페이지로 이동
+  const navigate = useNavigate();
+  const moveToLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <DetailContainer align={true}>
       <Container onSubmit={handleSubmit(onSubmit)}>
@@ -94,6 +120,15 @@ const Register = () => {
               placeholder="이름을 입력해주세요"
             />
             {errors.name && <ErrorText>{errors.name.message}</ErrorText>}
+          </InputWrapper>
+          <InputWrapper>
+            <InputValue
+              {...idRegister}
+              type="text"
+              id="id"
+              placeholder="아이디를 입력해주세요"
+            />
+            {errors.id && <ErrorText>{errors.id.message}</ErrorText>}
           </InputWrapper>
           <InputWrapper>
             <InputValue
@@ -141,7 +176,7 @@ const Register = () => {
         </SubmitButton>
         <ForUserContainer>
           <ForUser>이미 아이디가 있으신가요?</ForUser>
-          <MovePage>로그인 페이지로 이동하기</MovePage>
+          <MovePage onClick={moveToLogin}>로그인 페이지로 이동하기</MovePage>
         </ForUserContainer>
       </Container>
     </DetailContainer>
@@ -150,24 +185,107 @@ const Register = () => {
 
 export default Register;
 
-const Container = styled.form`
-  width: 650px;
+// export const Container = styled.form`
+//   width: 650px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+//   gap: 2rem;
+//   margin-top: 50px;
+// `;
+
+// export const Title = styled.h1`
+//   font-size: 20px;
+//   color: white;
+//   font-weight: 600;
+//   text-align: center;
+// `;
+
+// export const InputContainer = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+//   gap: 1.25rem;
+// `;
+
+// export const InputWrapper = styled.div`
+//   width: 90%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+//   gap: 1rem;
+// `;
+// export const InputValue = styled.input`
+//   width: 80%;
+//   border: none;
+//   outline: none;
+//   font-weight: 600;
+//   line-height: 1.5rem;
+//   padding: 0.75rem 1.25rem;
+//   border-radius: 30px;
+// `;
+
+// export const SubmitButton = styled.button`
+//   width: 80%;
+//   border-radius: 30px;
+//   height: 50px;
+//   border: none;
+//   background-color: ${(props) => (props.back ? "#FEC623" : "white")};
+//   font-size: 20px;
+//   font-weight: 700;
+//   color: 'white'};
+// `;
+
+// export const ErrorText = styled.div`
+//   color: #da353a;
+//   text-align: left;
+//   align-self: flex-start;
+//   margin-left: 50px;
+// `;
+
+// const ForUserContainer = styled.div`
+//   widht: 100%;
+//   display: flex;
+//   gap: 20px;
+//   margin-top: 20px;
+// `;
+
+// const ForUser = styled.h1`
+//   color: white;
+//   font-size: 18px;
+//   align-self: center;
+// `;
+
+// const MovePage = styled.button`
+//   background: none;
+//   border: none;
+//   color: white;
+//   font-weight: 700;
+//   font-size: 20px;
+// `;
+export const Container = styled.form`
+  width: 80%;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
-  margin-top: 50px;
+  margin-top: 5%;
 `;
 
-const Title = styled.h1`
-  font-size: 20px;
+export const Title = styled.h1`
+  font-size: 2rem;
   color: white;
   font-weight: 600;
   text-align: center;
 `;
 
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -176,7 +294,7 @@ const InputContainer = styled.div`
   gap: 1.25rem;
 `;
 
-const InputWrapper = styled.div`
+export const InputWrapper = styled.div`
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -184,7 +302,8 @@ const InputWrapper = styled.div`
   align-items: center;
   gap: 1rem;
 `;
-const InputValue = styled.input`
+
+export const InputValue = styled.input`
   width: 80%;
   border: none;
   outline: none;
@@ -194,38 +313,46 @@ const InputValue = styled.input`
   border-radius: 30px;
 `;
 
-const SubmitButton = styled.button`
+export const SubmitButton = styled.button`
   width: 80%;
   border-radius: 30px;
-  height: 50px;
+  height: 3rem;
   border: none;
   background-color: ${(props) => (props.back ? "#FEC623" : "white")};
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: 700;
   color: 'white'};
 `;
 
-const ErrorText = styled.div`
+export const ErrorText = styled.div`
   color: #da353a;
   text-align: left;
   align-self: flex-start;
-  margin-left: 50px;
+  margin-left: 5%;
 `;
 
 const ForUserContainer = styled.div`
-  widht: 100%;
+  width: 100%;
   display: flex;
-  gap: 20px;
-  margin-top: 20px;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+
+  ${theme.media.mobile`
+      flex-direction: column;
+    `}
 `;
 
 const ForUser = styled.h1`
   color: white;
-  font-size: 18px;
+  font-size: 1rem;
+  align-self: center;
 `;
 
-const MovePage = styled(ForUser)`
+const MovePage = styled.button`
+  background: none;
+  border: none;
   color: white;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.2rem;
 `;

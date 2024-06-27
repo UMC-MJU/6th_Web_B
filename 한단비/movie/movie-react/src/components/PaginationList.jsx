@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Loading from "./Loading";
 import { throttle } from "lodash";
 
-export default function MovieList({
+export default function Pagination({
   apiUrl,
   isPagination = false,
   isInfiniteScroll = false,
@@ -52,72 +52,25 @@ export default function MovieList({
     //console.log(pageNum);
   };
 
-  useEffect(() => {
-    if (isInfiniteScroll) {
-      const handleScroll = throttle(() => {
-        if (
-          window.innerHeight + window.scrollY >= document.body.offsetHeight &&
-          hasMoreResults &&
-          !isPagination &&
-          !loading
-        ) {
-          setPage((prevPage) => prevPage + 1);
-        }
-      }, 2000);
-
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }
-  }, [isInfiniteScroll, hasMoreResults, isPagination, loading]);
-
-  // const handleObserve = useCallback((entries) => {
-  //   entries.forEach((entry) => {
-  //     if (entry.isIntersecting && !loading) {
-  //       setPage((prevPage) => prevPage + 1);
-  //     }
-  //   });
-  // }, [loading, setPage]);
-
-  // useEffect(() => {
-  //   if (isInfiniteScroll && listRef.current) {
-  //     observerRef.current = new IntersectionObserver(handleObserve, {
-  //       root: null,
-  //       rootMargin: "0px",
-  //       threshold: 1.0,
-  //     });
-  //     observerRef.current.observe(listRef.current);
-  //     return () => {
-  //       if (observerRef.current) {
-  //         observerRef.current.disconnect();
-  //       }
-  //     };
-  //   }
-  // }, [isInfiniteScroll, handleObserve, listRef]);
-
   return (
     <OuterContainer>
-      {/* {loading ? (
-        <Loading />
-      ) : ( */}
-      <MovieContainer>
-        {movies && movies.length > 0 ? (
-          movies.map((item) => (
-            <Movie
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              poster_path={item.poster_path}
-              vote_average={item.vote_average}
-              overview={item.overview}
-              release_date={item.release_date}
-            />
-          ))
-        ) : (
-          <p>영화 로딩 중...</p>
-        )}
-      </MovieContainer>
-
-      {/* )} */}
+        <MovieContainer>
+          {movies.length > 0 ? (
+            movies.map((item) => (
+              <Movie
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                poster_path={item.poster_path}
+                vote_average={item.vote_average}
+                overview={item.overview}
+                release_date={item.release_date}
+              />
+            ))
+          ) : (
+            <p>영화 로딩 중..</p>
+          )}
+        </MovieContainer>
       {isPagination && (
         <PaginationList>
           <li>
