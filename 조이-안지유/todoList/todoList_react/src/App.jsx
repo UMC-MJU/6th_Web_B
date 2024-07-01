@@ -21,8 +21,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #E8EDEF;
-  width: 400px;
-  height: 600px;
+  width: 100vw;
+  height: 100vh;
 `
 
 const TodoContainer = styled.div`
@@ -30,8 +30,9 @@ const TodoContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 700px;
   background-color: white;
   border-radius: 5%;
+  gap: 20px;
 `

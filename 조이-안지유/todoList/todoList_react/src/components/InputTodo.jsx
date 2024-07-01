@@ -42,12 +42,13 @@ const InputContainer = styled.div`
 const Inputs = styled.div`
   display: flex;
   gap: 10px;
+  align-items: center;
 `
 
 
 const TodoInput = styled.input`
-  width: 200px;
-  height: 20px;
+  width: 300px;
+  height: 25px;
   border-radius: 5px;
   border: 2px solid #E8EDEF;
 `
