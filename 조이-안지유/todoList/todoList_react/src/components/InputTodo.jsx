@@ -22,10 +22,10 @@ const InputTodo = () => {
   return (
     <InputContainer>
       <form onSubmit={handleSubmit}>
-        <div>
-          <input type="text" value={text} onChange={handleTextChange}/>
-          <input type="submit" value="+"/>
-        </div>
+        <Inputs>
+          <TodoInput type="text" value={text} onChange={handleTextChange}/>
+          <TodoButton type="submit" value="+"/>
+        </Inputs>
       </form>
     </InputContainer>
   );
@@ -37,5 +37,26 @@ const InputContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+`
+
+const Inputs = styled.div`
+  display: flex;
+  gap: 10px;
+`
+
+
+const TodoInput = styled.input`
+  width: 200px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid #E8EDEF;
+`
+
+const TodoButton = styled.input`
+  width: 25px;
+  height: 25px;
   background-color: #E8EDEF;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
 `
