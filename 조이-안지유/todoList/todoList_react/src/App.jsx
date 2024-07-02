@@ -7,7 +7,9 @@ function App() {
   return (
     <Container>
       <TodoContainer>
-        <InputTodo/>
+        <HeaderInput>
+          <InputTodo/>
+        </HeaderInput>
         <TodoList/>
       </TodoContainer>
     </Container>
@@ -27,7 +29,7 @@ const Container = styled.div`
 
 const TodoContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   width: 400px;
@@ -35,4 +37,9 @@ const TodoContainer = styled.div`
   background-color: white;
   border-radius: 5%;
   gap: 20px;
+`
+
+const HeaderInput = styled.div`
+  width: 100%;
+  padding-top: 30px;
 `
