@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = [];
 
 export const todoSlice = createSlice({
-  name: 'todoFunction',
+  name: 'todo',
   initialState,
   reducers: {
     addTodo: (state, action) => { // 할 일 입력창에 입력되는 텍스트 값
@@ -25,5 +25,3 @@ export const todoSlice = createSlice({
 // reducer를 전역에서 사용하기 위해 slice 이름 뒤에 .actions를 붙여 export
 export const {addTodo, deleteTodo, complete} = todoSlice.actions;
 export default todoSlice.reducer;
-
-console.log(todoSlice.actions);

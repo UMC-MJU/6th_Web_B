@@ -4,6 +4,6 @@ import todoSlice from "./todoSlice.js";
 
 export default configureStore({
   reducer: {
-    todo: todoSlice
-  }
+    todo: todoSlice,
+  },
 });
