@@ -10,7 +10,9 @@ function App() {
         <HeaderInput>
           <InputTodo/>
         </HeaderInput>
-        <TodoList/>
+        <Body>
+          <TodoList/>
+        </Body>
       </TodoContainer>
     </Container>
   )
@@ -42,4 +44,9 @@ const TodoContainer = styled.div`
 const HeaderInput = styled.div`
   width: 100%;
   padding-top: 30px;
+`
+
+const Body = styled.div`
+  overflow-y: auto;
+  width: 100%;
 `
