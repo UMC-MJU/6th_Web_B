@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchMovie from "./SearchMovie";
 import Movie from "./Movie";
+import AuthUser from "./AuthUser";
+import { useCookies } from "react-cookie";
+import { useCallback } from "react";
 
 const Container = styled.div`
   width: 100%;
@@ -48,10 +51,37 @@ const SearchTitle = styled.h1`
 `;
 
 export default function Banner() {
+  const [username, setUsername] = useState("");
+  const [cookies] = useCookies(["user"]);
+  const isLoggedIn = !!cookies.user; // 쿠키에 정보가 있으면 로그인 된 것
+
+  const userInfo = useCallback(async () => {
+    try {
+      const result = await AuthUser();
+      console.log("사용자 정보", result);
+      if (isLoggedIn) {
+        setUsername(result.name);
+      } else {
+        setUsername("");
+      }
+    } catch (error) {
+      console.log("사용자 정보 못 받아옴", error);
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      userInfo();
+    } else {
+      setUsername('');
+    }
+  }, [userInfo, isLoggedIn]);
+  
+
   return (
     <Container>
       <BannerContainer>
-        <BannerText>환영합니다</BannerText>
+        <BannerText>{username} 환영합니다</BannerText>
       </BannerContainer>
       <SearchContainer>
         <SearchTitle>📽 Find your movies!</SearchTitle>
