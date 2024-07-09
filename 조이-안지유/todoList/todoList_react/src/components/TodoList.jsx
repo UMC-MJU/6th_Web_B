@@ -1,12 +1,10 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {complete, deleteTodo} from "../redux/todoSlice.js";
 import styled from "styled-components";
+import {useTodos} from "../hooks/useTodos.jsx";
 
 
 const TodoList = () => {
-  const todoList = useSelector(state => state.todo);
-  const dispatch = useDispatch();
+  const {todoList, completeTodo, removeTodo} = useTodos();
 
   return (
     <TodoContainer>
@@ -14,10 +12,10 @@ const TodoList = () => {
         <Todos>
           {todoList.map((todo, idx) => (
             <Todo key={todoList[idx].id}>
-              <input type="checkbox" onChange={() => dispatch(complete(todoList[idx].id))}/>
+              <input type="checkbox" onChange={() => completeTodo(todo.id)}/>
               <div>{todo.complete === false ? <TodoText>{todo.text}</TodoText> :
                 <TodoDeletedText>{todo.text}</TodoDeletedText>}</div>
-              <DeleteBtn type="button" value="-" onClick={() => dispatch(deleteTodo(todoList[idx].id))}/>
+              <DeleteBtn type="button" value="-" onClick={() => removeTodo(todo.id)}/>
             </Todo>
           ))}
         </Todos>
