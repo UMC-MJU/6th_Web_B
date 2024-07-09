@@ -31,7 +31,7 @@ const SearchMovies = () => {
   };
 
   return (
-    <>
+    <SearchContainer>
       <SearchBox>
         <SearchInput
           type="text"
@@ -40,30 +40,36 @@ const SearchMovies = () => {
         />
         <SearchBtn onClick={fetchMovies}><p>🔍</p></SearchBtn>
       </SearchBox>
-      <MovieContainer>
+      <MovieContainer isMovies={movies.length > 0}>
         {loading ? <p>데이터를 받아오는 중...</p> : (movies.map((data, index) => (
           <Movies data={data} key={index}/>
         )))}
       </MovieContainer>
-    </>
+    </SearchContainer>
 
   );
 };
 
 export default SearchMovies;
 
+const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 40px;
+  gap: 20px;
+`
+
 const SearchBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 40px;
   gap: 20px;
-  //background: orange;
-  position: absolute;
+  padding-bottom: 4vh;
 `
 
 const SearchInput = styled.input`
-  width: 50vw;
+  width: 30vw;
   height: 5vh;
   border-radius: 20px;
   border: none;
@@ -91,9 +97,10 @@ const SearchBtn = styled.button`
 
 const MovieContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  //background-color: rgb(33, 35, 72);
-  position: relative;
-  background: #61dafb;
-
+  background-color: rgb(18, 20, 43);
+  width: 80vw;
+  height: ${props => (props.isMovies ? '70vh' : 0)};
+  overflow: scroll;
 `
